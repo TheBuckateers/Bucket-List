@@ -19,7 +19,7 @@
   Can add, edit, delete comments.
   
 - Out
-  
+  We will not make an IOS app!
 
 ## MVP vs Stretch Goals
 
@@ -53,4 +53,26 @@
 
 ## Functional Requirements
 
-- 
+- A user can search for a country and see information, foods and weather/air quality data for that country.
+
+- A user can add, delete, update and save their Bucket List
+
+- A user can add notes to their Trip Bucket to help with planning.
+
+## Data Flow
+
+  A user visits the site, if the user is not logged in, a selection of random Trip Buckets will appear. If the user would like to add the Bucket to their Bucket List, they are routed to the Login Page. Then the user can add the Bucket.
+
+  The user can also Search for a Country. The search will show food, weather/air quality, advisories and possible environmental concerns. The user can add the Bucket to their List, add/update/delete notes, delete Buckets or delete entire Bucket Lists.
+  
+  The user can visit the About Us page to see information on the site developers.
+
+## Non-Functional Requirements
+
+- Security
+
+  We are using Auth0 to secure authentication to the site. This will ensure users are the only authorized entrants into their Bucket Lists to review notes, see trip plans, etc. Auth0 is a trusted security measure, so we feel confident that our users will feel secure with our site.
+
+- Scalability
+
+  We could keep adding information points to our sites, and keep finding APIs that find another few tidbits of data. However, we are going to limit our scope of items to <enter amount of items here> to ensure the users are not overwhelmed by their user experience when visiting our site. We can definitely add many more APIs and endpoints, however, we would like to offer our users a clean, well presented, uncluttered looking site.
