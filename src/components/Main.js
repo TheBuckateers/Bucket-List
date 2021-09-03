@@ -35,7 +35,9 @@ class Main extends Component {
     try {
       const results = await axios.get(`http://localhost:3001/country`);
       // spreads the set of random numbers function to an array to loop over
-      const randomNumbers = [...this.randomNumbersGenerator(10, 250)];
+      const randomNumbers = [
+        ...this.randomNumbersGenerator(20, results.data.length),
+      ];
       const randomCountries = [];
       // loops over the results received from API and pushed only those random number entries into an array
       for (let i = 0; i < randomNumbers.length; i++) {
