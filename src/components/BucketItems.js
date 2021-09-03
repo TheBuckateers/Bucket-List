@@ -9,13 +9,9 @@ class BucketItems extends Component {
     return (
       <Container>
         <Row>
-          <BucketItem />
-          <BucketItem />
-          <BucketItem />
-          <BucketItem />
-          <BucketItem />
-          <BucketItem />
-          <BucketItem />
+          {this.props.randomCountries.map((country, index) => {
+            return <BucketItem key={index} country={country} />;
+          })}
         </Row>
       </Container>
     );
