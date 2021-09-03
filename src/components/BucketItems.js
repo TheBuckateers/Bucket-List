@@ -1,0 +1,21 @@
+import { Component } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+
+import BucketItem from "./BucketItem";
+
+class BucketItems extends Component {
+  render() {
+    return (
+      <Container>
+        <Row>
+          {this.props.randomCountries.map((country, index) => {
+            return <BucketItem key={index} country={country} />;
+          })}
+        </Row>
+      </Container>
+    );
+  }
+}
+
+export default BucketItems;

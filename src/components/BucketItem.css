@@ -1,0 +1,10 @@
+.scroll {
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+/* ul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 10px;
+} */
