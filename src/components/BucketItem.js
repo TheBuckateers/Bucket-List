@@ -8,6 +8,10 @@ import ListGroupItem from "react-bootstrap/ListGroupItem";
 import "./BucketItem.css";
 
 class BucketItem extends Component {
+  moreClickHandler = () => {
+    console.log(this.props.country);
+  };
+
   render() {
     return (
       <Col xs={12} md={6} lg={4}>
@@ -20,15 +24,15 @@ class BucketItem extends Component {
                 <ListGroupItem className="border-0 p-0">
                   Capital: {this.props.country.capital}
                 </ListGroupItem>
-                <ListGroupItem className="border-0 p-0">
+                {/* <ListGroupItem className="border-0 p-0">
                   Population: {this.props.country.population.toLocaleString()}
-                </ListGroupItem>
+                </ListGroupItem> */}
                 <ListGroupItem className="border-0 p-0">
                   Region: {this.props.country.region}
                 </ListGroupItem>
-                <ListGroupItem className="border-0 p-0">
+                {/* <ListGroupItem className="border-0 p-0">
                   Subregion: {this.props.country.subregion}
-                </ListGroupItem>
+                </ListGroupItem> */}
                 <ListGroupItem className="border-0 p-0">
                   Time Zone: {this.props.country.timezones + " "}
                 </ListGroupItem>
@@ -36,20 +40,10 @@ class BucketItem extends Component {
                   Top Domain: {this.props.country.topLevelDomain}
                 </ListGroupItem>
               </ListGroup>
-              {/* <ul>
-                <li>Capital: {this.props.country.capital}</li>
-                <li>
-                  Population: {this.props.country.population.toLocaleString()}
-                </li>
-                <li>Region: {this.props.country.region}</li>
-                <li>Subregion: {this.props.country.subregion}</li>
-                <li>Time Zone: {this.props.country.timezone}</li>
-                <li>Top Domain: {this.props.country.topLevelDomain}</li>
-              </ul> */}
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <Button variant="light" size="sm">
+            <Button variant="light" size="sm" onClick={this.moreClickHandler}>
               More
             </Button>
           </Card.Footer>
