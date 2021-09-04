@@ -6,7 +6,12 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 import "./BucketItem.css";
-import { getAdvisoryByCode, getCountryEnviro } from "../helpers/DataHelpers";
+import {
+  getAdvisoryByCode,
+  getCountryEnviro,
+  getMealsByArea,
+  getCountryPics,
+} from "../helpers/DataHelpers";
 
 class BucketItem extends Component {
   constructor(props) {
@@ -15,9 +20,12 @@ class BucketItem extends Component {
       countryAdvisory: {},
       countryPollution: {},
       countryWeather: {},
+      countryMeals: {},
+      countryPics: {},
     };
   }
 
+  // The section in here are just to test and how to get the data from backend etc. These can be moved and used in other areas. Just ensure they are imported. See the import statement above. (THIS IS ONLY A TEST AREA)
   moreClickHandler = async () => {
     const { country } = this.props;
     // Stores the country code to a const to use in other parts of function
@@ -29,6 +37,17 @@ class BucketItem extends Component {
     } catch (err) {
       console.log("Advisory: ", err.message);
     }
+
+    // calls helper function to get meals available for this country region. Comes from the country object property of 'demonym'
+    try {
+      const region = country.demonym;
+      // calls helper function to get list of all meals by region of country
+      const regionMeals = await getMealsByArea(region);
+      this.setState({ countryMeals: regionMeals });
+    } catch (err) {
+      console.log("Meals: ", err.message);
+    }
+
     // calls helper function to get pollution/weather info
     // result has a current object which contains a pollution and a weather object which each contains the data related to that subject. ie. <variable>.current.weather or .pollution
     try {
@@ -46,19 +65,35 @@ class BucketItem extends Component {
     } catch (err) {
       console.log("Environment data: ", err.message);
     }
+
+    //calls helper to get pics for the country selected
+    try {
+      const searchCountry = encodeURI(country.name);
+      const countryPics = await getCountryPics(searchCountry);
+      this.setState({ countryPics: countryPics });
+    } catch (err) {
+      console.log("Pics Error: ", err.message);
+    }
+
     // Series of logs just to ensure data is working and for review. To comment out or remove from code before deploy
     console.log("Country: ", country);
     console.log("Advisory ", this.state.countryAdvisory);
-    // console.log("Enviro Data: ", enviro);
     console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
+    console.log("Meals: ", this.state.countryMeals);
+    console.log("Pics: ", this.state.countryPics);
   };
 
   render() {
     return (
       <Col xs={12} md={6} lg={4}>
         <Card className="mb-3" style={{ height: "32rem" }}>
-          <Card.Img variant="top" src={this.props.country.flag} height="200" />
+          <Card.Img
+            style={{ border: "1px solid black" }}
+            variant="top"
+            src={this.props.country.flag}
+            height="200"
+          />
           <Card.Body>
             <Card.Title>{this.props.country.name}</Card.Title>
             <Card.Text className="scroll">

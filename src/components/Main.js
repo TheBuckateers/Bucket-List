@@ -104,7 +104,11 @@ class Main extends Component {
           onChange={this.countrySearchChangeHandler}
           onClick={this.countrySearchClickHander}
         />
-        <BucketItems listToDisplay={this.state.listToDisplay} />
+        {this.state.listToDisplay.length ? (
+          <BucketItems listToDisplay={this.state.listToDisplay} />
+        ) : (
+          <h2>No Countries to Display</h2>
+        )}
       </>
     );
   }
