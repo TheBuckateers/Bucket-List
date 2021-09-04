@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Main from "./components/Main";
-import About from "./components/About";
+import AboutUs from "./components/AboutUs";
 import MoreInfo from "./components/MoreInfo";
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
             <MoreInfo />
           </Route>
           <Route exact path="/about">
-            <About />
+            <AboutUs />
           </Route>
         </Switch>
       </>
