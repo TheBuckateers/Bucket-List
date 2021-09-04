@@ -1,0 +1,23 @@
+.cardContainer {
+  background-color: aquamarine;
+}
+
+.heather {
+  float: left;
+  width: 500px;
+}
+
+.clarissa {
+  float: left;
+  width: 500px;
+}
+
+.mark {
+  float:right;
+  width: 500px;
+}
+
+.willem {
+  float: right;
+  width: 500px;
+}
