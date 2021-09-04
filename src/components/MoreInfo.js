@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel'
 // import Row from "react-bootstrap/Row";
 
 // import BucketItem from "./BucketItem";
-import clarissa from "../img/clarissa.jpg";
+import clarissa from "../img/Clarissa.jpg";
 import mark from "../img/Mark.jpg";
 import heather from "../img/Heather.jpg";
 

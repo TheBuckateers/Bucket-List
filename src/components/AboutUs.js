@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Container } from "react-bootstrap";
 import Clarissa from "../img/Clarissa.jpg";
-import Heather from "../img/Heather.jpeg";
+import Heather from "../img/Heather.jpg";
 import Mark from "../img/Mark.jpg";
+import Will from "../img/Will.jpg";
 
 import "../components/AboutUs.css";
 
@@ -12,7 +13,7 @@ class AboutUs extends React.Component {
     return (
       <>
         <Container className="cardContainer">
-          <Card className="heather">
+          <Card className="Heather">
             <Card.Img
               src={Heather}
             />
@@ -25,7 +26,7 @@ class AboutUs extends React.Component {
             </Card.Body>
           </Card>
 
-          <Card className="clarissa">
+          <Card className="Clarissa">
             <Card.Img
               src={Clarissa}
             />
@@ -38,7 +39,7 @@ class AboutUs extends React.Component {
             </Card.Body>
           </Card>
 
-          <Card className="mark">
+          <Card className="Mark">
             <Card.Img
               src={Mark}
             />
@@ -53,7 +54,7 @@ class AboutUs extends React.Component {
 
           <Card className="Willem">
             <Card.Img
-              src={Heather}
+              src={Will}
             />
             <Card.Body>
               <Card.Title>Willem Jacobs</Card.Title>
