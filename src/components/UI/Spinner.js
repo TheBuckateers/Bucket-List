@@ -5,7 +5,7 @@ import Spin from "react-bootstrap/Spinner";
 class Spinner extends Component {
   render() {
     return (
-      <Container>
+      <Container className="border">
         <Spin animation="grow" variant="info" />
       </Container>
     );
