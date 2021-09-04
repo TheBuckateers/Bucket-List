@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
-import Spinner from "react-bootstrap/Spinner";
+import Spinner from "../components/UI/Spinner";
 import {
   getAdvisoryByCode,
   getCountryEnviro,
@@ -80,12 +80,11 @@ class MoreInfo extends Component {
     console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     console.log("Meals: ", this.state.countryMeals);
-    console.log("Pics: ", this.state.countryPics);
+    // console.log("Pics: ", this.state.countryPics);
     this.setState({ isLoading: false });
   };
 
   render() {
-    const spinner = <Spinner animation="grow" variant="info" />;
     let carouselItems;
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
@@ -109,7 +108,9 @@ class MoreInfo extends Component {
       <>
         <h3>Hello!</h3>
         <Container>
-          <Carousel>{this.state.isLoading ? spinner : carouselItems}</Carousel>
+          <Carousel>
+            {this.state.isLoading ? <Spinner /> : carouselItems}
+          </Carousel>
         </Container>
         <Container>{/* Icons for overlays or  */}</Container>
         <Container></Container>
