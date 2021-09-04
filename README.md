@@ -35,7 +35,7 @@ This is a React App utilizing a Node JS server that uses Auth0 to exchange a tok
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-React, Node JS, Mongo DB, Mongoose, GitHub, Auth0, JWKS, Trello
+React, Node JS, Mongo DB, MongoDB Atlas, Mongoose, GitHub, Auth0, JWKS, Trello
 
 ## Change Log
 
