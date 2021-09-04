@@ -5,9 +5,9 @@ import Carousel from 'react-bootstrap/Carousel'
 // import Row from "react-bootstrap/Row";
 
 // import BucketItem from "./BucketItem";
-import clarissa from "../img/Clarissa.jpg";
-import mark from "../img/Mark.jpg";
-import heather from "../img/Heather.jpeg";
+import Clarissa from "../img/Clarissa.jpg";
+import Mark from "../img/Mark.jpg";
+import Heather from "../img/Heather.jpg";
 
 class MoreInfo extends Component {
   render() {
@@ -20,7 +20,7 @@ class MoreInfo extends Component {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={clarissa}
+                src={Clarissa}
                 alt="Woman on the beach in front of cruise ship"
               />
               <Carousel.Caption>
@@ -31,7 +31,7 @@ class MoreInfo extends Component {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={mark}
+                src={Mark}
                 alt="Woman on the beach in front of cruise ship"
               />
               <Carousel.Caption>
@@ -42,7 +42,7 @@ class MoreInfo extends Component {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={heather}
+                src={Heather}
                 alt="Woman on the beach in front of cruise ship"
               />
               <Carousel.Caption>
