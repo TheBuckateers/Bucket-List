@@ -15,9 +15,6 @@ class Header extends Component {
             <Link to="/">Home</Link>
           </Button>
           <Button>
-            <Link to="/more-info">More Info</Link>
-          </Button>
-          <Button>
             <Link to="/about">About Us</Link>
           </Button>
           {/* {isAuthenticated && (
