@@ -1,5 +1,6 @@
 import { Component } from "react";
 import BucketItems from "./BucketItems";
+import Spinner from "react-bootstrap/Spinner";
 
 import "./Main.css";
 import Search from "./UI/Search";
@@ -9,6 +10,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       countrySearch: "",
       listOfCountries: [],
       listToDisplay: [],
@@ -41,6 +43,7 @@ class Main extends Component {
 
   //Get a listing of countries to put into state
   componentDidMount = async () => {
+    this.setState({ isLoading: true });
     // const { getIdTokenClaims, user } = this.props.auth0;
     // let tokenClaims = await getIdTokenClaims();
     // const jwt = tokenClaims.__raw;
@@ -57,6 +60,7 @@ class Main extends Component {
     } catch (err) {
       console.log(err);
     }
+    this.setState({ isLoading: false });
   };
 
   // method to update the country to search for state. This method is passed to the Search component as onChange.
@@ -108,7 +112,7 @@ class Main extends Component {
         {this.state.listToDisplay.length ? (
           <BucketItems listToDisplay={this.state.listToDisplay} />
         ) : (
-          <h2>No Countries to Display</h2>
+          <Spinner animation="grow" variant="info" />
         )}
       </>
     );
