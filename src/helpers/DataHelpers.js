@@ -74,3 +74,15 @@ export const getMealById = async (id) => {
     console.log(err);
   }
 };
+
+// Return object of pics based for the countrySearch
+export const getCountryPics = async (country) => {
+  try {
+    const result = await axios(
+      `${process.env.REACT_APP_BACKEND_SERVER}/country/pics/${country}`
+    );
+    return result.data;
+  } catch (err) {
+    console.log(err);
+  }
+};

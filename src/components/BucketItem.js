@@ -10,6 +10,7 @@ import {
   getAdvisoryByCode,
   getCountryEnviro,
   getMealsByArea,
+  getCountryPics,
 } from "../helpers/DataHelpers";
 
 class BucketItem extends Component {
@@ -20,6 +21,7 @@ class BucketItem extends Component {
       countryPollution: {},
       countryWeather: {},
       countryMeals: {},
+      countryPics: {},
     };
   }
 
@@ -64,12 +66,22 @@ class BucketItem extends Component {
       console.log("Environment data: ", err.message);
     }
 
+    //calls helper to get pics for the country selected
+    try {
+      const searchCountry = encodeURI(country.name);
+      const countryPics = await getCountryPics(searchCountry);
+      this.setState({ countryPics: countryPics });
+    } catch (err) {
+      console.log("Pics Error: ", err.message);
+    }
+
     // Series of logs just to ensure data is working and for review. To comment out or remove from code before deploy
     console.log("Country: ", country);
     console.log("Advisory ", this.state.countryAdvisory);
     console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     console.log("Meals: ", this.state.countryMeals);
+    console.log("Pics: ", this.state.countryPics);
   };
 
   render() {
