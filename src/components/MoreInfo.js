@@ -90,7 +90,7 @@ class MoreInfo extends Component {
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
         return (
-          <Carousel.Item key={index}>
+          <Carousel.Item key={index} interval={1000}>
             <img
               className="d-block w-100"
               src={item.url_small}
