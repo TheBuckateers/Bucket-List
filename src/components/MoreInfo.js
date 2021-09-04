@@ -1,10 +1,11 @@
 import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Carousel from 'react-bootstrap/Carousel'
+
 // import Row from "react-bootstrap/Row";
 
 // import BucketItem from "./BucketItem";
-import clarissa from "../img/clarissa.jpg";
+import clarissa from "../img/Clarissa.jpg";
 import mark from "../img/Mark.jpg";
 import heather from "../img/Heather.jpeg";
 
@@ -12,6 +13,7 @@ class MoreInfo extends Component {
   render() {
     return (
       <>
+        {console.log("More: ", this.props)}
         <h3>Hello!</h3>
         <Container>
           <Carousel>

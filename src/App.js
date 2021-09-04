@@ -11,12 +11,8 @@ class App extends Component {
     return (
       <>
         <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route exact path="/more-info">
-            <MoreInfo />
-          </Route>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/more-info" component={MoreInfo} />
           <Route exact path="/about">
             <AboutUs />
           </Route>
