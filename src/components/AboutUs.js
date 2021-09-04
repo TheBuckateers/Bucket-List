@@ -59,8 +59,8 @@ class AboutUs extends React.Component {
               <Card.Title>Willem Jacobs</Card.Title>
               <Card.Subtitle>Software Developer</Card.Subtitle>
               <Card.Text>What's on my bucket? Iceland</Card.Text>
-              <Card.Link href="">LinkedIn</Card.Link>
-              <Card.Link href="">Github</Card.Link>
+              <Card.Link href="https://www.linkedin.com/in/willemajacobs/">LinkedIn</Card.Link>
+              <Card.Link href="https://github.com/Willem-Jacobs">Github</Card.Link>
             </Card.Body>
           </Card>
         </Container>
