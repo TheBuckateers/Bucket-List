@@ -15,7 +15,7 @@ class BucketItem extends Component {
   render() {
     return (
       <Col xs={12} md={6} lg={4}>
-        <Card className="mb-3">
+        <Card className="mb-3" style={{ height: "32rem" }}>
           <Card.Img variant="top" src={this.props.country.flag} height="200" />
           <Card.Body>
             <Card.Title>{this.props.country.name}</Card.Title>

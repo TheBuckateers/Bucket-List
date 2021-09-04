@@ -48,7 +48,9 @@ class Main extends Component {
     //   headers: { Authorization: `Bearer ${jwt}` },
     // };
     try {
-      const results = await axios.get(`http://localhost:3001/country`);
+      const results = await axios.get(
+        `${process.env.REACT_APP_BACKEND_SERVER}/country`
+      );
       // places the entire list of all countries into state
       this.setState({
         listOfCountries: results.data,
@@ -87,7 +89,6 @@ class Main extends Component {
         return "";
       }
     });
-    console.log("SearchCountry: ", searchedCountry);
     // sets the listToDisplay array of country objects to be equal to the searchedCountry array of country objects
     // As this udpates state, a render is automatically done.
     // clears the countrySearch field in state which then clears it in the search component also.
@@ -95,10 +96,6 @@ class Main extends Component {
       listToDisplay: searchedCountry,
       countrySearch: "",
     });
-    // console.log("Search Country Result: ", searchedCountry);
-    // console.log("Search Country: ", this.state.countrySearch);
-    // console.log("List of Countries: ", this.state.listOfCountries);
-    console.log("Random List of Countries: ", this.state.listToDisplay);
   };
 
   render() {
