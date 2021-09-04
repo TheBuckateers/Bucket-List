@@ -1,9 +1,9 @@
 import { Component } from "react";
 import BucketItems from "./BucketItems";
-import axios from "axios";
 
 import "./Main.css";
 import Search from "./UI/Search";
+import { getCountries } from "../helpers/DataHelpers";
 
 class Main extends Component {
   constructor(props) {
@@ -48,14 +48,12 @@ class Main extends Component {
     //   headers: { Authorization: `Bearer ${jwt}` },
     // };
     try {
-      const results = await axios.get(
-        `${process.env.REACT_APP_BACKEND_SERVER}/country`
-      );
+      const results = await getCountries();
       // places the entire list of all countries into state
       this.setState({
-        listOfCountries: results.data,
+        listOfCountries: results,
       });
-      this.randomCountryGenerator(results.data);
+      this.randomCountryGenerator(results);
     } catch (err) {
       console.log(err);
     }
