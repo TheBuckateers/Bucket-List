@@ -1,4 +1,4 @@
-## Bucket-List-React_App
+# Bucket-List-React-App
 
 **Authors**
 Mark Thanadabouth, Full-Stack Developer / Italy
@@ -6,7 +6,9 @@ Clarissa Pamonicutt, Full-Stack Developer / Japan
 Willem Jacobs, Software Developer/Astronaut / Iceland
 Heather Bisgaard, Full Stack Software Engineer / Iceland
 
-**Version**: 1.0.1
+- **Version** 1.0.1
+- [**Deployed Site**](https://bucket-list-travel.netlify.app/)
+- [**Backend Server**](https://bucket-list-travel-api.herokuapp.com/)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -14,12 +16,12 @@ This is a React App utilizing a Node JS server that uses Auth0 to exchange a tok
 
 ## Links to References
 <!--  -->
-[Buckateers Trello Page](https://trello.com/b/OTBwxXBr/buckateers)
-[Wire Frame](documents/WireFrame.jpg)
-[Data Model](documents/DataModel.jpg)
-[Project Prep #1](documents/ProjectPrep1.pdf)
-[Project Prep #2](documents/ProjectPrep2.pdf)
-[Requirements](documents/requirements.md)
+- [Buckateers Trello Page](https://trello.com/b/OTBwxXBr/buckateers)
+- [Wire Frame](documents/WireFrame.jpg)
+- [Data Model](documents/DataModel.jpg)
+- [Project Prep #1](documents/ProjectPrep1.pdf)
+- [Project Prep #2](documents/ProjectPrep2.pdf)
+- [Requirements](documents/requirements.md)
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
@@ -40,6 +42,8 @@ React, Node JS, Mongo DB, Mongoose, GitHub, Auth0, JWKS, Trello
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+09-02-21 7:36pm - Deployed to Netlify to get URLs for Heroku and MongoDB Atlas.
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
