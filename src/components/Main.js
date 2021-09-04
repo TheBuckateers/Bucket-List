@@ -71,6 +71,7 @@ class Main extends Component {
     // random random countries
     if (!this.state.countrySearch) {
       this.randomCountryGenerator(this.state.listOfCountries);
+      console.log("Router Info: ", this.props);
       return;
     }
     // uses the state variable countrySearch to filter over the entire list of countries then takes the country object
