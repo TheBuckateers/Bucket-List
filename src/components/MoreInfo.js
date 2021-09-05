@@ -13,6 +13,7 @@ import {
   getCountryPics,
 } from "../helpers/DataHelpers";
 
+// import "./MoreInfo.css";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
@@ -113,15 +114,15 @@ class MoreInfo extends Component {
               className="d-block w-100"
               src={item.url_small}
               alt={item.description}
+              height="700"
+              width="500"
             />
             <Carousel.Caption>
               <h3>{this.state.country.name}</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <p>
-                Photo by: {item.photo_firstName + " " + item.photo_lastName}
-              </p>
-              {item.portfolio_url ? <p>Site: {item.portfolio_url} </p> : ""}
+              <br />
             </Carousel.Caption>
+            <p>Photo by: {item.photo_firstName + " " + item.photo_lastName}</p>
           </Carousel.Item>
         );
       });
@@ -132,7 +133,7 @@ class MoreInfo extends Component {
         {this.state.isLoading ? (
           <Spinner />
         ) : (
-          <div>
+          <div className="mt-3">
             <Container>
               <Carousel>{carouselItems}</Carousel>
             </Container>
