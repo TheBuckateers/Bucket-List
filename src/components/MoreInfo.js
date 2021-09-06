@@ -2,7 +2,7 @@ import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Carousel from 'react-bootstrap/Carousel';
 // import Modal from 'react-bootstrap/Modal';
-// import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
 import Spinner from "../components/UI/Spinner";
 import axios from 'axios';
@@ -12,8 +12,8 @@ import {
   getMealsByArea,
   getCountryPics,
 } from "../helpers/DataHelpers";
-import MoreInfoCard from "../components/MoreInfoCard";
-import MoreInfoModal from "../components/MoreInfoModal";
+// import MoreInfoCard from "../components/MoreInfoCard";
+import BucketListModal from "../components/BucketListModal";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
@@ -44,6 +44,21 @@ class MoreInfo extends Component {
     this.setState({
       showModal: false,
     });
+  }
+
+  // adds a note when the note modal is open
+  handleAdd = async (note) => {
+    try {
+      let response = await axios.post(`${SERVER}/bucketList`, note);
+      console.log('are we there yet?');
+      console.log(response.data);
+      this.setState({
+        notes: [...this.state.notes, response.data],
+      })
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
 
@@ -107,19 +122,7 @@ class MoreInfo extends Component {
     this.setState({ isLoading: false });
   };
 
-  handleAdd = async (note) => {
-    try {
-      let response = await axios.post(`${SERVER}/bucketList`, note);
-      console.log('are we there yet?');
-      console.log(response.data);
-      this.setState({
-        notes: [...this.state.notes, response.data],
-      })
-    }
-    catch (err) {
-      console.log(err);
-    }
-  }
+  
 
   render() {
     let carouselItems;
@@ -154,11 +157,14 @@ class MoreInfo extends Component {
           <h2>This is where the country details icons are located</h2>
         </Container>
         {/* Notes Modal*/}
-        <MoreInfoCard
-          notesState={this.state.notes}
-          showModal={() => this.handleShowModal}
-        />
-        <MoreInfoModal
+        <Button
+          onClick={this.handleShowModal}
+          variant="info"
+        >
+          Want to Add This Country to Your Bucket List?
+        </Button>
+        <BucketListModal
+          // country={this.state.country}
           showModal={this.state.showModal}
           closeModal={this.handleCloseModal}
           handleAdd={this.handleAdd}

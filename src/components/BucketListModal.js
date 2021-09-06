@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-class MoreInfoModal extends React.Component {
+class BucketListModal extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -22,13 +22,14 @@ class MoreInfoModal extends React.Component {
     return (
       <>
         <Modal
-          show={this.state.showModal}
-          onHide={this.props.handleCloseModal}
+          show={this.props.showModal}
+          onHide={this.props.closeModal}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Notes</Modal.Title>
+            <Modal.Title>Bucket List</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            {/* {this.props.country} */}
             <Form
               onSubmit={this.handleSubmit}
             >
@@ -43,15 +44,34 @@ class MoreInfoModal extends React.Component {
                 />
               </Form.Group>
               <Button
+              variant="info"
+              type="submit"
+              onClick={this.handleSubmit}
+            >
+              Add Note
+            </Button>
+            <Button
+              variant="secondary"
+            // onClick={() => this.handleUpdate()}
+            >
+              Edit Note
+            </Button>
+            <Button
+              variant="danger"
+            // onClick={() => this.handleDelete()}
+            >
+              Delete Note
+            </Button>
+              {/* <Button
                 type="submit"
               >
                 Add Notes
-              </Button>
+              </Button> */}
             </Form>
           </Modal.Body>
-          {/* <Modal.Footer>
+          <Modal.Footer>
               
-            </Modal.Footer> */}
+            </Modal.Footer>
         </Modal>
       </>
 
@@ -59,4 +79,4 @@ class MoreInfoModal extends React.Component {
   }
 }
 
-export default MoreInfoModal;
+export default BucketListModal;
