@@ -16,6 +16,8 @@ import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
 import MealsDisplay from "./MealsDisplay";
 
+import "./MoreInfo.css";
+
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
 // import "./MoreInfo.css";
@@ -135,17 +137,17 @@ class MoreInfo extends Component {
               className="d-block w-100"
               style={{ objectFit: "contain" }}
               // style={{ height: "auto", width: "75%" }}
-              width="600"
-              height="800"
+              width={600}
+              height={800}
               src={item.url_small}
               alt={item.description}
             />
             <Carousel.Caption>
               <h3>{this.state.country.name}</h3>
-              {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
-              <br />
+              <p>
+                Photo by: {item.photo_firstName + " " + item.photo_lastName}
+              </p>
             </Carousel.Caption>
-            <p>Photo by: {item.photo_firstName + " " + item.photo_lastName}</p>
           </Carousel.Item>
         );
       });
@@ -170,11 +172,11 @@ class MoreInfo extends Component {
                     Add Country to Your Bucket List
                   </Button>
                 ) : (
-                  <h4 className="border p-2 mt-2 mb-2 text-center">
+                  <h4 className="border p-2 mt-2 mb-2 text-center bg-success border border-dark rounded">
                     Login to add {this.state.country.name} to your Bucket List
                   </h4>
                 )}
-                <h2>This is where the country details icons are located</h2>
+                {/* <h2>This is where the country details icons are located</h2> */}
               </Container>
               <Pollution countryPollution={this.state.countryPollution} />
               {this.state.countryMeals.length ? (
