@@ -12,7 +12,11 @@ class Header extends Component {
     const loginDisplay = (
       <Button onClick={() => loginWithRedirect()}>Log In</Button>
     );
-    const logoutDisplay = <Button onClick={() => logout()}>Log Out</Button>;
+    const logoutDisplay = (
+      <Button onClick={() => logout({ returnTo: window.location.origin })}>
+        Log Out
+      </Button>
+    );
     return (
       <header>
         <Navbar expand="xxl" bg="dark" variant="dark">
