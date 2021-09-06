@@ -12,6 +12,7 @@ import {
   getMealsByArea,
   getCountryPics,
 } from "../helpers/DataHelpers";
+import Pollution from "../components/Pollution.js";
 
 class MoreInfo extends Component {
   constructor(props) {
@@ -185,7 +186,9 @@ class MoreInfo extends Component {
               
             </Modal.Footer> */}
         </Modal>
-
+          <Pollution 
+            countryPollution={this.state.countryPollution}
+          />
       </>
     );
   }

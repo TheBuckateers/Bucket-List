@@ -12,6 +12,7 @@ class AboutUs extends React.Component {
     return (
       <>
         <Container className="cardContainer">
+
           <Card className="Heather">
             <Card.Img
               src={Heather}
@@ -31,7 +32,6 @@ class AboutUs extends React.Component {
             <Card.Img
               src={Clarissa}
             />
-
             <Card.Body>
               <Card.Title>Clarissa Pamonicutt</Card.Title>
               <Card.Subtitle>Full-Stack Developer</Card.Subtitle>
@@ -49,7 +49,6 @@ class AboutUs extends React.Component {
             <Card.Img
               src={Mark}
             />
-
             <Card.Body>
               <Card.Title>Mark Thanadabouth</Card.Title>
               <Card.Subtitle>Full-Stack Developer</Card.Subtitle>
@@ -68,7 +67,6 @@ class AboutUs extends React.Component {
             <Card.Img
               src={Will}
             />
-
             <Card.Body>
               <Card.Title>Willem Jacobs</Card.Title>
               <Card.Subtitle>Software Developer</Card.Subtitle>
