@@ -13,6 +13,8 @@ import {
   getMealsByArea,
   getCountryPics,
 } from "../helpers/DataHelpers";
+
+import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
@@ -163,6 +165,11 @@ class MoreInfo extends Component {
           <h2>This is where the country details icons are located</h2>
         </Container>
         {/* Notes Modal*/}
+       
+          <Pollution 
+            countryPollution={this.state.countryPollution}
+          />
+              
         <Button
           onClick={this.handleShowModal}
           variant="info"
@@ -175,7 +182,7 @@ class MoreInfo extends Component {
           closeModal={this.handleCloseModal}
           handleAdd={this.handleAdd}
         />
-
+    </>
 
 //         {this.state.isLoading ? (
 //           <Spinner />
@@ -213,8 +220,7 @@ class MoreInfo extends Component {
 //           </div>
 //         )}
         
-
-      </>
+  
     );
   }
 }

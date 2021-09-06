@@ -1,23 +1,22 @@
 .cardContainer {
   background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
-.heather {
-  float: left;
-  width: 500px;
+.Heather {
+  width: 300px;
 }
 
-.clarissa {
-  float: left;
-  width: 500px;
+.Clarissa {
+  width: 300px;
 }
 
-.mark {
-  float:right;
-  width: 500px;
+.Mark {
+  width: 300px;
 }
 
-.willem {
-  float: right;
-  width: 500px;
+.Willem {
+  width: 300px;
 }
