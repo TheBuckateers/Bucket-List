@@ -6,12 +6,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Spinner from "../components/UI/Spinner";
+import axios from 'axios';
 import {
   getAdvisoryByCode,
   getCountryEnviro,
   getMealsByArea,
   getCountryPics,
 } from "../helpers/DataHelpers";
+import BucketListModal from "../components/BucketListModal";
+
+const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
 // import "./MoreInfo.css";
 class MoreInfo extends Component {
@@ -42,7 +46,23 @@ class MoreInfo extends Component {
     this.setState({
       showModal: false,
     });
-  };
+  }
+
+  // adds a note when the note modal is open
+  handleAdd = async (note) => {
+    try {
+      let response = await axios.post(`${SERVER}/bucketList`, note);
+      console.log('are we there yet?');
+      console.log(response.data);
+      this.setState({
+        notes: [...this.state.notes, response.data],
+      })
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
 
   componentDidMount = async () => {
     const { country } = this.state;
@@ -104,12 +124,14 @@ class MoreInfo extends Component {
     this.setState({ isLoading: false });
   };
 
+  
+
   render() {
     let carouselItems;
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
         return (
-          <Carousel.Item key={index} interval={1000}>
+          <Carousel.Item key={index} interval={10000}>
             <img
               className="d-block w-100"
               src={item.url_small}
@@ -130,64 +152,68 @@ class MoreInfo extends Component {
 
     return (
       <>
-        {this.state.isLoading ? (
-          <Spinner />
-        ) : (
-          <div className="mt-3">
-            <Container>
-              <Carousel>{carouselItems}</Carousel>
-            </Container>
-            <Container>
-              {/* Icons for overlays or  modals*/}
-              <h2>This is where the country details icons are located</h2>
-            </Container>
-            {/* Notes Modal*/}
-            <Card>
-              <Card.Header as="h5">Notes</Card.Header>
-              <Card.Body>
-                <Card.Text>{this.state.notes}</Card.Text>
-                <Button variant="info" onClick={this.handleShowModal}>
-                  Add Note
-                </Button>
-                <Button
-                  variant="secondary"
-                  // onClick={() => this.handleUpdate()}
-                >
-                  Edit Note
-                </Button>
-                <Button
-                  variant="danger"
-                  // onClick={() => this.handleDelete()}
-                >
-                  Delete Note
-                </Button>
-              </Card.Body>
-            </Card>
-          </div>
-        )}
-        <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Notes</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form
-            // onSubmit={this.props.addNote}
-            >
-              <Form.Group controlId="notesForm.ConrolTestarea1">
-                <Form.Label>Notes about your country bucket!</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={10}
-                  value={this.state.notes}
-                />
-              </Form.Group>
-              <Button type="submit">Add Notes</Button>
-            </Form>
-          </Modal.Body>
-          {/* <Modal.Footer>
-              
-            </Modal.Footer> */}
-        </Modal>
+        <h3>Hello!</h3>
+        <Container>
+          <Carousel>
+            {this.state.isLoading ? <Spinner /> : carouselItems}
+          </Carousel>
+        </Container>
+        <Container>
+          {/* Icons for overlays or  modals*/}
+          <h2>This is where the country details icons are located</h2>
+        </Container>
+        {/* Notes Modal*/}
+        <Button
+          onClick={this.handleShowModal}
+          variant="info"
+        >
+          Want to Add This Country to Your Bucket List?
+        </Button>
+        <BucketListModal
+          // country={this.state.country}
+          showModal={this.state.showModal}
+          closeModal={this.handleCloseModal}
+          handleAdd={this.handleAdd}
+        />
+
+
+//         {this.state.isLoading ? (
+//           <Spinner />
+//         ) : (
+//           <div className="mt-3">
+//             <Container>
+//               <Carousel>{carouselItems}</Carousel>
+//             </Container>
+//             <Container>
+//               {/* Icons for overlays or  modals*/}
+//               <h2>This is where the country details icons are located</h2>
+//             </Container>
+//             {/* Notes Modal*/}
+//             <Card>
+//               <Card.Header as="h5">Notes</Card.Header>
+//               <Card.Body>
+//                 <Card.Text>{this.state.notes}</Card.Text>
+//                 <Button variant="info" onClick={this.handleShowModal}>
+//                   Add Note
+//                 </Button>
+//                 <Button
+//                   variant="secondary"
+//                   // onClick={() => this.handleUpdate()}
+//                 >
+//                   Edit Note
+//                 </Button>
+//                 <Button
+//                   variant="danger"
+//                   // onClick={() => this.handleDelete()}
+//                 >
+//                   Delete Note
+//                 </Button>
+//               </Card.Body>
+//             </Card>
+//           </div>
+//         )}
+        
+
       </>
     );
   }
