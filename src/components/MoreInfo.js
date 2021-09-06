@@ -1,19 +1,25 @@
 import { Component } from "react";
 import Container from "react-bootstrap/Container";
-import Carousel from 'react-bootstrap/Carousel';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Carousel from "react-bootstrap/Carousel";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Spinner from "../components/UI/Spinner";
+import axios from 'axios';
 import {
   getAdvisoryByCode,
   getCountryEnviro,
   getMealsByArea,
   getCountryPics,
 } from "../helpers/DataHelpers";
-import Pollution from "../components/Pollution.js";
 
+import Pollution from "../components/Pollution.js";
+import BucketListModal from "../components/BucketListModal";
+
+const SERVER = process.env.REACT_APP_BACKEND_SERVER;
+
+// import "./MoreInfo.css";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +28,7 @@ class MoreInfo extends Component {
       showModal: false,
       isLoading: false,
       country: this.props.location.state.country,
+      countryAdvisory: {},
       countryPollution: {},
       countryWeather: {},
       countryMeals: {},
@@ -34,13 +41,28 @@ class MoreInfo extends Component {
     this.setState({
       showModal: true,
     });
-  }
+  };
 
   // closes the notes modal
   handleCloseModal = () => {
     this.setState({
       showModal: false,
     });
+  }
+
+  // adds a note when the note modal is open
+  handleAdd = async (note) => {
+    try {
+      let response = await axios.post(`${SERVER}/bucketList`, note);
+      console.log('are we there yet?');
+      console.log(response.data);
+      this.setState({
+        notes: [...this.state.notes, response.data],
+      })
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
 
@@ -100,25 +122,31 @@ class MoreInfo extends Component {
     console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     console.log("Meals: ", this.state.countryMeals);
-    // console.log("Pics: ", this.state.countryPics);
+    console.log("Pics: ", this.state.countryPics);
     this.setState({ isLoading: false });
   };
+
+  
 
   render() {
     let carouselItems;
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
         return (
-          <Carousel.Item key={index} interval={1000}>
+          <Carousel.Item key={index} interval={10000}>
             <img
               className="d-block w-100"
               src={item.url_small}
               alt={item.description}
+              height="700"
+              width="500"
             />
             <Carousel.Caption>
               <h3>{this.state.country.name}</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <br />
             </Carousel.Caption>
+            <p>Photo by: {item.photo_firstName + " " + item.photo_lastName}</p>
           </Carousel.Item>
         );
       });
@@ -137,59 +165,62 @@ class MoreInfo extends Component {
           <h2>This is where the country details icons are located</h2>
         </Container>
         {/* Notes Modal*/}
-        <Card>
-          <Card.Header as="h5">Notes</Card.Header>
-          <Card.Body>
-            <Card.Text>
-            {this.state.notes}
-            </Card.Text>
-            <Button
-              variant="info"
-              onClick={this.handleShowModal}
-            >
-              Add Note
-            </Button>
-            <Button
-              variant="secondary"
-            // onClick={() => this.handleUpdate()}
-            >
-              Edit Note
-            </Button>
-            <Button
-              variant="danger"
-            // onClick={() => this.handleDelete()}
-            >
-              Delete Note
-            </Button>
-          </Card.Body>
-        </Card>
-        <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Notes</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form
-            // onSubmit={this.props.addNote}
-            >
-              <Form.Group controlId="notesForm.ConrolTestarea1">
-                <Form.Label>Notes about your country bucket!</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={10}
-                  value={this.state.notes}
-                />
-              </Form.Group>
-              <Button type="submit">Add Notes</Button>
-            </Form>
-          </Modal.Body>
-          {/* <Modal.Footer>
-              
-            </Modal.Footer> */}
-        </Modal>
+       
           <Pollution 
             countryPollution={this.state.countryPollution}
           />
-      </>
+              
+        <Button
+          onClick={this.handleShowModal}
+          variant="info"
+        >
+          Want to Add This Country to Your Bucket List?
+        </Button>
+        <BucketListModal
+          // country={this.state.country}
+          showModal={this.state.showModal}
+          closeModal={this.handleCloseModal}
+          handleAdd={this.handleAdd}
+        />
+    </>
+
+//         {this.state.isLoading ? (
+//           <Spinner />
+//         ) : (
+//           <div className="mt-3">
+//             <Container>
+//               <Carousel>{carouselItems}</Carousel>
+//             </Container>
+//             <Container>
+//               {/* Icons for overlays or  modals*/}
+//               <h2>This is where the country details icons are located</h2>
+//             </Container>
+//             {/* Notes Modal*/}
+//             <Card>
+//               <Card.Header as="h5">Notes</Card.Header>
+//               <Card.Body>
+//                 <Card.Text>{this.state.notes}</Card.Text>
+//                 <Button variant="info" onClick={this.handleShowModal}>
+//                   Add Note
+//                 </Button>
+//                 <Button
+//                   variant="secondary"
+//                   // onClick={() => this.handleUpdate()}
+//                 >
+//                   Edit Note
+//                 </Button>
+//                 <Button
+//                   variant="danger"
+//                   // onClick={() => this.handleDelete()}
+//                 >
+//                   Delete Note
+//                 </Button>
+//               </Card.Body>
+//             </Card>
+//           </div>
+//         )}
+        
+  
     );
   }
 }
