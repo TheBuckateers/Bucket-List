@@ -19,28 +19,30 @@ class Meal extends Component {
   };
 
   render() {
+    // .replace(/(.*?\. )/g, "$&\n")
     const { recipe } = this.props;
     const ingredientDisplay = this.buildRecipeDisplay(recipe);
     return (
       <>
         <Modal.Header closeButton>
-          <Modal.Title>
+          <Modal.Title className="text-primary">
             {recipe.strMeal} - {recipe.strArea}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            <strong>Category:</strong> {recipe.strCategory}
+            <strong className="text-info">Category:</strong>{" "}
+            {recipe.strCategory}
           </p>
-          <h3>Ingredients</h3>
+          <h3 className="text-info">Ingredients</h3>
           <ul>{ingredientDisplay}</ul>
-          <h3>Instructions</h3>
+          <h3 className="text-info">Instructions</h3>
           <p>{recipe.strInstructions}</p>
           <p>
-            <strong>Tag:</strong>{" "}
+            <strong className="text-info">Tag:</strong>{" "}
             {recipe.strTags !== null ? recipe.strTags : "None"}
           </p>
-          <h3>Links</h3>
+          <h3 className="text-info">Links</h3>
           <a
             style={{ color: "black" }}
             href={recipe.strSource}
