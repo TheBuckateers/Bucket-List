@@ -11,7 +11,7 @@ class Pollution extends Component {
   // }
 
   render() {
-    console.log(this.props.countryPollution);
+    // console.log(this.props.countryPollution);
     return (
       <Container>
         <Card>
