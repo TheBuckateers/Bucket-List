@@ -9,7 +9,7 @@ import MealCard from "./MealCard";
 class MealsDisplay extends Component {
   render() {
     return (
-      <Container className="mt-3">
+      <Container className="mt-3 mb-5">
         <Accordion>
           <Card>
             <Accordion.Toggle

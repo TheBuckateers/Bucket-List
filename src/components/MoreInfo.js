@@ -133,7 +133,10 @@ class MoreInfo extends Component {
           <Carousel.Item key={index} interval={3000} fluid>
             <img
               className="d-block w-100"
-              style={{ height: "auto", width: "75%" }}
+              style={{ objectFit: "contain" }}
+              // style={{ height: "auto", width: "75%" }}
+              width="700"
+              height="900"
               src={item.url_small}
               alt={item.description}
             />
