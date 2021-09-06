@@ -1,9 +1,9 @@
 import { Component } from "react";
 import Container from "react-bootstrap/Container";
-import Carousel from 'react-bootstrap/Carousel';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Carousel from "react-bootstrap/Carousel";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Spinner from "../components/UI/Spinner";
 import {
@@ -13,6 +13,7 @@ import {
   getCountryPics,
 } from "../helpers/DataHelpers";
 
+// import "./MoreInfo.css";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,7 @@ class MoreInfo extends Component {
       showModal: false,
       isLoading: false,
       country: this.props.location.state.country,
+      countryAdvisory: {},
       countryPollution: {},
       countryWeather: {},
       countryMeals: {},
@@ -33,15 +35,14 @@ class MoreInfo extends Component {
     this.setState({
       showModal: true,
     });
-  }
+  };
 
   // closes the notes modal
   handleCloseModal = () => {
     this.setState({
       showModal: false,
     });
-  }
-
+  };
 
   componentDidMount = async () => {
     const { country } = this.state;
@@ -99,7 +100,7 @@ class MoreInfo extends Component {
     console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     console.log("Meals: ", this.state.countryMeals);
-    // console.log("Pics: ", this.state.countryPics);
+    console.log("Pics: ", this.state.countryPics);
     this.setState({ isLoading: false });
   };
 
@@ -113,11 +114,15 @@ class MoreInfo extends Component {
               className="d-block w-100"
               src={item.url_small}
               alt={item.description}
+              height="700"
+              width="500"
             />
             <Carousel.Caption>
               <h3>{this.state.country.name}</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <br />
             </Carousel.Caption>
+            <p>Photo by: {item.photo_firstName + " " + item.photo_lastName}</p>
           </Carousel.Item>
         );
       });
@@ -125,43 +130,41 @@ class MoreInfo extends Component {
 
     return (
       <>
-        <h3>Hello!</h3>
-        <Container>
-          <Carousel>
-            {this.state.isLoading ? <Spinner /> : carouselItems}
-          </Carousel>
-        </Container>
-        <Container>
-          {/* Icons for overlays or  modals*/}
-          <h2>This is where the country details icons are located</h2>
-        </Container>
-        {/* Notes Modal*/}
-        <Card>
-          <Card.Header as="h5">Notes</Card.Header>
-          <Card.Body>
-            <Card.Text>
-            {this.state.notes}
-            </Card.Text>
-            <Button
-              variant="info"
-              onClick={this.handleShowModal}
-            >
-              Add Note
-            </Button>
-            <Button
-              variant="secondary"
-            // onClick={() => this.handleUpdate()}
-            >
-              Edit Note
-            </Button>
-            <Button
-              variant="danger"
-            // onClick={() => this.handleDelete()}
-            >
-              Delete Note
-            </Button>
-          </Card.Body>
-        </Card>
+        {this.state.isLoading ? (
+          <Spinner />
+        ) : (
+          <div className="mt-3">
+            <Container>
+              <Carousel>{carouselItems}</Carousel>
+            </Container>
+            <Container>
+              {/* Icons for overlays or  modals*/}
+              <h2>This is where the country details icons are located</h2>
+            </Container>
+            {/* Notes Modal*/}
+            <Card>
+              <Card.Header as="h5">Notes</Card.Header>
+              <Card.Body>
+                <Card.Text>{this.state.notes}</Card.Text>
+                <Button variant="info" onClick={this.handleShowModal}>
+                  Add Note
+                </Button>
+                <Button
+                  variant="secondary"
+                  // onClick={() => this.handleUpdate()}
+                >
+                  Edit Note
+                </Button>
+                <Button
+                  variant="danger"
+                  // onClick={() => this.handleDelete()}
+                >
+                  Delete Note
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
+        )}
         <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
           <Modal.Header closeButton>
             <Modal.Title>Notes</Modal.Title>
@@ -185,7 +188,6 @@ class MoreInfo extends Component {
               
             </Modal.Footer> */}
         </Modal>
-
       </>
     );
   }
