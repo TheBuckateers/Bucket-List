@@ -3,9 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 class Meal extends Component {
-  render() {
-    const { recipe } = this.props;
-
+  buildRecipeDisplay = (recipe) => {
     const ingredientList = [];
     let i = 1;
     let myKey1 = "strIngredient";
@@ -17,7 +15,12 @@ class Meal extends Component {
     const ingredientDisplay = ingredientList.map((item, idx) => (
       <li key={idx}>{item}</li>
     ));
+    return ingredientDisplay;
+  };
 
+  render() {
+    const { recipe } = this.props;
+    const ingredientDisplay = this.buildRecipeDisplay(recipe);
     return (
       <>
         <Modal.Header closeButton>
@@ -34,7 +37,8 @@ class Meal extends Component {
           <h3>Instructions</h3>
           <p>{recipe.strInstructions}</p>
           <p>
-            <strong>Tag:</strong> {recipe.strTags}.
+            <strong>Tag:</strong>{" "}
+            {recipe.strTags !== null ? recipe.strTags : "None"}
           </p>
           <h3>Links</h3>
           <a

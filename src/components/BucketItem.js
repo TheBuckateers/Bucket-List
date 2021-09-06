@@ -19,7 +19,11 @@ class BucketItem extends Component {
   render() {
     return (
       <Col xs={12} md={6} lg={4}>
-        <Card className="mb-3" style={{ height: "30rem" }}>
+        <Card
+          className="mb-3"
+          style={{ height: "30rem", cursor: "pointer" }}
+          onClick={this.moreClickHandler}
+        >
           <Card.Img
             style={{ border: "1px solid black" }}
             variant="top"

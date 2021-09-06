@@ -16,6 +16,7 @@ class Meals extends Component {
 
   getMealHandler = async (id) => {
     try {
+      // console.log("ID: ", id);
       const result = await getMealById(id);
       this.setState({ recipeData: result.meals[0] });
     } catch (err) {
@@ -26,6 +27,7 @@ class Meals extends Component {
   };
 
   recipeModalHandler = () => {
+    // console.log("In show recipe modal", !this.state.showModal);
     this.setState((prevState) => {
       return { showModal: !prevState.showModal };
     });

@@ -135,8 +135,8 @@ class MoreInfo extends Component {
               className="d-block w-100"
               style={{ objectFit: "contain" }}
               // style={{ height: "auto", width: "75%" }}
-              width="700"
-              height="900"
+              width="600"
+              height="800"
               src={item.url_small}
               alt={item.description}
             />
