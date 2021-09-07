@@ -11,14 +11,16 @@ class Pollution extends Component {
   // }
 
   render() {
-    console.log(this.props.countryPollution);
+    // console.log(this.props.countryPollution);
     return (
       <Container>
         <Card>
           <Card.Header as="h5">Pollution</Card.Header>
           <Card.Body>
             <Card.Text>
-              {this.props.countryPollution.aqicn}
+              <h2>
+                {this.props.country.name} Current AQI: {this.props.countryPollution.aqi}
+              </h2>
             </Card.Text>
             <Image
               src={aqi}
@@ -29,7 +31,7 @@ class Pollution extends Component {
           </Card.Body>
         </Card>
       </Container>
-    )
+    );
   }
 }
 
