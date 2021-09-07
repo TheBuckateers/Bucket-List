@@ -1,12 +1,10 @@
 import { Component } from "react";
+import { withAuth0 } from "@auth0/auth0-react";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
-// import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-// import Form from "react-bootstrap/Form";
-// import Card from "react-bootstrap/Card";
 import Spinner from "../components/UI/Spinner";
-import axios from 'axios';
+import axios from "axios";
 import {
   getAdvisoryByCode,
   getCountryEnviro,
@@ -17,16 +15,20 @@ import {
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
 import Advisory from "../components/UI/Advisory.js";
+import { withAuth0 } from "@auth0/auth0-react";
+import MealsDisplay from "./MealsDisplay";
 
+import "./MoreInfo.css";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
+
 
 // import "./MoreInfo.css";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: [],
+      buckets: [],
       showModal: false,
       isLoading: false,
       country: this.props.location.state.country,
@@ -38,36 +40,46 @@ class MoreInfo extends Component {
     };
   }
 
-  // shows the notes modal
+  
+  // shows the buckets modal
   handleShowModal = () => {
     this.setState({
       showModal: true,
     });
   };
-
-  // closes the notes modal
+  
+  // closes the buckets modal
   handleCloseModal = () => {
     this.setState({
       showModal: false,
     });
   }
-
-  // adds a note when the note modal is open
-  handleAdd = async (note) => {
+  
+  // adds a country to the bucketlist when the note modal is open
+  handleAdd = async (bucket) => {
     try {
-      let response = await axios.post(`${SERVER}/bucketList`, note);
-      console.log('are we there yet?');
+      const { user } = this.props.auth0;
+      console.log('user:', user);
+      // let bucket = {
+      //   params: {
+      //     "CountryCode:": `countryCode ${this.state.country.alpha2Code}`, 
+      //     "Email": `email ${this.props.auth0.user.email}`,
+      //     "Note": `note ${this.state.buckets.note}`,
+      //   },
+      // };
+      let response = await axios.post(`${SERVER}/bucketList`, bucket);
+      console.log("are we there yet?");
       console.log(response.data);
       this.setState({
-        notes: [...this.state.notes, response.data],
+        buckets: [...this.state.buckets, response.data],
       })
     }
     catch (err) {
-      console.log(err);
+      console.log('handleAdd err:', err);
     }
   }
-
-
+  
+  
   componentDidMount = async () => {
     const { country } = this.state;
     this.setState({ isLoading: true });
@@ -80,7 +92,7 @@ class MoreInfo extends Component {
     } catch (err) {
       console.log("Advisory: ", err.message);
     }
-
+    
     // calls helper function to get meals available for this country region. Comes from the country object property of 'demonym'
     try {
       const region = country.demonym;
@@ -90,7 +102,7 @@ class MoreInfo extends Component {
     } catch (err) {
       console.log("Meals: ", err.message);
     }
-
+    
     // calls helper function to get pollution/weather info
     // result has a current object which contains a pollution and a weather object which each contains the data related to that subject. ie. <variable>.current.weather or .pollution
     try {
@@ -111,125 +123,105 @@ class MoreInfo extends Component {
 
     //calls helper to get pics for the country selected
     try {
-      const searchCountry = encodeURI(country.name);
-      const countryPics = await getCountryPics(searchCountry);
+      // has to encode country name a this could have spaces
+      const encodedCountry = encodeURI(country.name);
+      const countryPics = await getCountryPics(encodedCountry);
       this.setState({ countryPics: countryPics });
     } catch (err) {
       console.log("Pics Error: ", err.message);
     }
+    this.setState({ isLoading: false });
 
     // Series of logs just to ensure data is working and for review. To comment out or remove from code before deploy
     console.log("Country: ", country);
     console.log("Advisory ", this.state.countryAdvisory);
-    console.log("Pollution: ", this.state.countryPollution);
+    console.log("Advisory 2: ", this.state.countryAdvisory.advisory.message);
+    // console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
-    console.log("Meals: ", this.state.countryMeals);
-    console.log("Pics: ", this.state.countryPics);
-    this.setState({ isLoading: false });
+    // console.log("Meals: ", this.state.countryMeals);
+    // console.log("Pics: ", this.state.countryPics);
   };
 
-  
 
   render() {
+    const { isAuthenticated } = this.props.auth0;
     let carouselItems;
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
         return (
-          <Carousel.Item key={index} interval={10000} className="carousel">
+//           <Carousel.Item key={index} interval={10000} className="carousel">
+
+          <Carousel.Item key={index} interval={3000} fluid>
             <img
               className="d-block w-100"
+              style={{ objectFit: "contain" }}
+              width={600}
+              height={800}
               src={item.url_small}
               alt={item.description}
-              height="700"
-              width="500"
             />
             <Carousel.Caption>
               <h3>{this.state.country.name}</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <br />
+              <p>
+                Photo by: {item.photo_firstName + " " + item.photo_lastName}
+              </p>
             </Carousel.Caption>
-            <p>Photo by: {item.photo_firstName + " " + item.photo_lastName}</p>
           </Carousel.Item>
         );
       });
     }
 
+    
+
     return (
       <>
-        <h3>Hello!</h3>
-        <Container>
-          <Carousel>
-            {this.state.isLoading ? <Spinner /> : carouselItems}
-          </Carousel>
-        </Container>
-        <Container>
-          {/* Icons for overlays or  modals*/}
-          <h2>This is where the country details icons are located</h2>
-        </Container>
-        {/* Notes Modal*/}
-
-          <Pollution  
-            countryPollution={this.state.countryPollution}
-            country={this.state.country}
-          />
-
-          <Advisory 
+        <Container className="mt-3">
+          {this.state.isLoading ? (
+            <Spinner />
+          ) : (
+            <>
+              <Carousel>{carouselItems}</Carousel>
+              <Container>
+                {/* Icons for overlays or modals*/}
+                {isAuthenticated ? (
+                  <Button
+                    className="mt-2 mb-2"
+                    onClick={this.handleShowModal}
+                    variant="info"
+                  >
+                    Add Country to Your Bucket List
+                  </Button>
+                ) : (
+                  <h4 className="border p-2 mt-2 mb-2 text-center bg-success border border-dark rounded">
+                    Login to add {this.state.country.name} to your Bucket List
+                  </h4>
+                )}
+                {/* <h2>This is where the country details icons are located</h2> */}
+              </Container>
+              <Pollution countryPollution={this.state.countryPollution} country={this.state.country} />
+                <Advisory 
             countryAdvisory={this.state.countryAdvisory} 
           />
-              
-        <Button
-          onClick={this.handleShowModal}
-          variant="info"
-        >
-          Want to Add This Country to Your Bucket List?
-        </Button>
+              {this.state.countryMeals.length ? (
+                <MealsDisplay
+                  meals={this.state.countryMeals}
+                  countryName={this.state.country.name}
+                />
+              ) : (
+                ""
+              )}
+            </>
+          )}
+        </Container>
         <BucketListModal
-          // country={this.state.country}
+          country={this.state.country}
           showModal={this.state.showModal}
           closeModal={this.handleCloseModal}
           handleAdd={this.handleAdd}
         />
-    </>
-
-//         {this.state.isLoading ? (
-//           <Spinner />
-//         ) : (
-//           <div className="mt-3">
-//             <Container>
-//               <Carousel>{carouselItems}</Carousel>
-//             </Container>
-//             <Container>
-//               {/* Icons for overlays or  modals*/}
-//               <h2>This is where the country details icons are located</h2>
-//             </Container>
-//             {/* Notes Modal*/}
-//             <Card>
-//               <Card.Header as="h5">Notes</Card.Header>
-//               <Card.Body>
-//                 <Card.Text>{this.state.notes}</Card.Text>
-//                 <Button variant="info" onClick={this.handleShowModal}>
-//                   Add Note
-//                 </Button>
-//                 <Button
-//                   variant="secondary"
-//                   // onClick={() => this.handleUpdate()}
-//                 >
-//                   Edit Note
-//                 </Button>
-//                 <Button
-//                   variant="danger"
-//                   // onClick={() => this.handleDelete()}
-//                 >
-//                   Delete Note
-//                 </Button>
-//               </Card.Body>
-//             </Card>
-//           </div>
-//         )}
-        
-  
+      </>
     );
   }
 }
 
-export default MoreInfo;
+export default withAuth0(MoreInfo);

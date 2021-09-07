@@ -19,7 +19,11 @@ class BucketItem extends Component {
   render() {
     return (
       <Col xs={12} md={6} lg={4}>
-        <Card className="mb-3" style={{ height: "32rem" }}>
+        <Card
+          className="mb-3"
+          style={{ height: "30rem", cursor: "pointer" }}
+          onClick={this.moreClickHandler}
+        >
           <Card.Img
             style={{ border: "1px solid black" }}
             variant="top"
@@ -33,21 +37,21 @@ class BucketItem extends Component {
                 <ListGroupItem className="border-0 p-0">
                   Capital: {this.props.country.capital}
                 </ListGroupItem>
-                {/* <ListGroupItem className="border-0 p-0">
+                <ListGroupItem className="border-0 p-0">
                   Population: {this.props.country.population.toLocaleString()}
-                </ListGroupItem> */}
+                </ListGroupItem>
                 <ListGroupItem className="border-0 p-0">
                   Region: {this.props.country.region}
                 </ListGroupItem>
-                {/* <ListGroupItem className="border-0 p-0">
+                <ListGroupItem className="border-0 p-0">
                   Subregion: {this.props.country.subregion}
-                </ListGroupItem> */}
-                <ListGroupItem className="border-0 p-0">
+                </ListGroupItem>
+                {/* <ListGroupItem className="border-0 p-0">
                   Time Zone: {this.props.country.timezones + " "}
-                </ListGroupItem>
-                <ListGroupItem className="border-0 p-0">
+                </ListGroupItem> */}
+                {/* <ListGroupItem className="border-0 p-0">
                   Top Domain: {this.props.country.topLevelDomain}
-                </ListGroupItem>
+                </ListGroupItem> */}
               </ListGroup>
             </Card.Text>
           </Card.Body>
