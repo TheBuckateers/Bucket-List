@@ -120,6 +120,7 @@ class MoreInfo extends Component {
     // Series of logs just to ensure data is working and for review. To comment out or remove from code before deploy
     console.log("Country: ", country);
     console.log("Advisory ", this.state.countryAdvisory);
+    console.log("Advisory 2: ", this.state.countryAdvisory.advisory.message);
     // console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     // console.log("Meals: ", this.state.countryMeals);
