@@ -16,7 +16,6 @@ import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
 import Weather from "../components/Weather";
 import Advisory from "../components/UI/Advisory.js";
-import { withAuth0 } from "@auth0/auth0-react";
 import MealsDisplay from "./MealsDisplay";
 
 import "./MoreInfo.css";
