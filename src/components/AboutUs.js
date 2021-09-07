@@ -20,7 +20,7 @@ class AboutUs extends React.Component {
             <Card.Body>
               <Card.Title>Heather Bisgaard</Card.Title>
               <Card.Subtitle>Full Stack Software Engineer</Card.Subtitle>
-              <Card.Text>What's on my bucket? Iceland</Card.Text>
+              <Card.Text>What's on my bucket? New Zealand</Card.Text>
               <Card.Link href="https://www.linkedin.com/in/heather-bisgaard/">
                 LinkedIn
               </Card.Link>

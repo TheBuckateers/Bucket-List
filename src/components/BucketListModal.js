@@ -18,7 +18,10 @@ class BucketListModal extends React.Component {
   // handles the submit of the buckets to the bucket list
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.handleAdd(this.state);
+    let country = this.props.country.alpha2Code;
+    let email = this.props.auth0.user.email;
+    let note = this.state.buckets.notes
+    this.props.handleAdd({country, email, note});
     this.props.closeModal();
   };
 
@@ -82,8 +85,8 @@ class BucketListModal extends React.Component {
                   as="textarea"
                   rows={10}
                   placeholder="Notes"
-                  // on updtae will need this line below
-                  // value={this.state.buckets}
+                // on update will need this line below
+                // value={this.state.buckets}
                 />
               </Form.Group>
               {/* <h2>{user.email}</h2> */}

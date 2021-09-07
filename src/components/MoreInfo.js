@@ -14,11 +14,13 @@ import {
 
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
+import { withAuth0 } from "@auth0/auth0-react";
 import MealsDisplay from "./MealsDisplay";
 
 import "./MoreInfo.css";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
+
 
 // import "./MoreInfo.css";
 class MoreInfo extends Component {
@@ -37,34 +39,46 @@ class MoreInfo extends Component {
     };
   }
 
+  
   // shows the buckets modal
   handleShowModal = () => {
     this.setState({
       showModal: true,
     });
   };
-
+  
   // closes the buckets modal
   handleCloseModal = () => {
     this.setState({
       showModal: false,
     });
-  };
-
-  // adds a note when the note modal is open
+  }
+  
+  // adds a country to the bucketlist when the note modal is open
   handleAdd = async (bucket) => {
     try {
+      const { user } = this.props.auth0;
+      console.log('user:', user);
+      // let bucket = {
+      //   params: {
+      //     "CountryCode:": `countryCode ${this.state.country.alpha2Code}`, 
+      //     "Email": `email ${this.props.auth0.user.email}`,
+      //     "Note": `note ${this.state.buckets.note}`,
+      //   },
+      // };
       let response = await axios.post(`${SERVER}/bucketList`, bucket);
       console.log("are we there yet?");
       console.log(response.data);
       this.setState({
         buckets: [...this.state.buckets, response.data],
-      });
-    } catch (err) {
-      console.log(err);
+      })
     }
-  };
-
+    catch (err) {
+      console.log('handleAdd err:', err);
+    }
+  }
+  
+  
   componentDidMount = async () => {
     const { country } = this.state;
     this.setState({ isLoading: true });
@@ -77,7 +91,7 @@ class MoreInfo extends Component {
     } catch (err) {
       console.log("Advisory: ", err.message);
     }
-
+    
     // calls helper function to get meals available for this country region. Comes from the country object property of 'demonym'
     try {
       const region = country.demonym;
@@ -87,7 +101,7 @@ class MoreInfo extends Component {
     } catch (err) {
       console.log("Meals: ", err.message);
     }
-
+    
     // calls helper function to get pollution/weather info
     // result has a current object which contains a pollution and a weather object which each contains the data related to that subject. ie. <variable>.current.weather or .pollution
     try {
@@ -127,6 +141,7 @@ class MoreInfo extends Component {
     // console.log("Pics: ", this.state.countryPics);
   };
 
+
   render() {
     const { isAuthenticated } = this.props.auth0;
     let carouselItems;
@@ -153,6 +168,8 @@ class MoreInfo extends Component {
         );
       });
     }
+
+    
 
     return (
       <>
