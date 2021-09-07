@@ -14,6 +14,7 @@ import {
 
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
+import Advisory from "../components/UI/Advisory.js";
 import { withAuth0 } from "@auth0/auth0-react";
 import MealsDisplay from "./MealsDisplay";
 
@@ -148,11 +149,12 @@ class MoreInfo extends Component {
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
         return (
+//           <Carousel.Item key={index} interval={10000} className="carousel">
+
           <Carousel.Item key={index} interval={3000} fluid>
             <img
               className="d-block w-100"
               style={{ objectFit: "contain" }}
-              // style={{ height: "auto", width: "75%" }}
               width={600}
               height={800}
               src={item.url_small}
@@ -196,7 +198,10 @@ class MoreInfo extends Component {
                 )}
                 {/* <h2>This is where the country details icons are located</h2> */}
               </Container>
-              <Pollution countryPollution={this.state.countryPollution} />
+              <Pollution countryPollution={this.state.countryPollution} country={this.state.country} />
+                <Advisory 
+            countryAdvisory={this.state.countryAdvisory} 
+          />
               {this.state.countryMeals.length ? (
                 <MealsDisplay
                   meals={this.state.countryMeals}

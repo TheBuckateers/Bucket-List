@@ -1,3 +1,18 @@
+
+/* .carousel {
+  /* any dimensions are fine, it can be responsive with max-width */
+  /* width: 700px;
+  height: 500px; */
+/*   object-fit: cover;
+  object-position: center;
+  height: 50vh
+}
+ */
+/* make sure your .items will get correct height */
+/* .carousel-inner {
+  height: 100%;
+} */
+
 /* .countryAdd {
   margin-top: 15px;
 } */
@@ -11,6 +26,7 @@
   top: 85%;
   transform: translateY(-50%);
 }
+
 
 .carousel .carousel-indicators li {
   background-color: gray;
