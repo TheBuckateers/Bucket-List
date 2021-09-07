@@ -1,13 +1,16 @@
 .carousel {
   /* any dimensions are fine, it can be responsive with max-width */
-  width: 700px;
-  height: 500px;
+  /* width: 700px;
+  height: 500px; */
+  object-fit: cover;
+  object-position: center;
+  height: 50vh
 }
 
-.carousel-inner {
-  /* make sure your .items will get correct height */
+/* make sure your .items will get correct height */
+/* .carousel-inner {
   height: 100%;
-}
+} */
 
 .item {
   background-size: cover;

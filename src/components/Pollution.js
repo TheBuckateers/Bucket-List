@@ -18,7 +18,9 @@ class Pollution extends Component {
           <Card.Header as="h5">Pollution</Card.Header>
           <Card.Body>
             <Card.Text>
-              {this.props.countryPollution.aqicn}
+              <h2>
+                {this.props.country.name} Current AQI: {this.props.countryPollution.aqi}
+              </h2>
             </Card.Text>
             <Image
               src={aqi}

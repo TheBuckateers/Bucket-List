@@ -1,10 +1,10 @@
 import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
-import Modal from "react-bootstrap/Modal";
+// import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
+// import Form from "react-bootstrap/Form";
+// import Card from "react-bootstrap/Card";
 import Spinner from "../components/UI/Spinner";
 import axios from 'axios';
 import {
@@ -16,6 +16,8 @@ import {
 
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
+import Advisory from "../components/UI/Advisory.js";
+
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
@@ -133,7 +135,7 @@ class MoreInfo extends Component {
     if (this.state.countryPics.length) {
       carouselItems = this.state.countryPics.map((item, index) => {
         return (
-          <Carousel.Item key={index} interval={10000}>
+          <Carousel.Item key={index} interval={10000} className="carousel">
             <img
               className="d-block w-100"
               src={item.url_small}
@@ -165,9 +167,14 @@ class MoreInfo extends Component {
           <h2>This is where the country details icons are located</h2>
         </Container>
         {/* Notes Modal*/}
-       
-          <Pollution 
+
+          <Pollution  
             countryPollution={this.state.countryPollution}
+            country={this.state.country}
+          />
+
+          <Advisory 
+            countryAdvisory={this.state.countryAdvisory} 
           />
               
         <Button
