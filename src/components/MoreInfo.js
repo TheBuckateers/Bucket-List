@@ -16,6 +16,7 @@ import {
 
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
+import Weather from "../components/Weather";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
@@ -168,6 +169,11 @@ class MoreInfo extends Component {
        
           <Pollution 
             countryPollution={this.state.countryPollution}
+          />
+          <Weather 
+          countryWeather={this.state.countryWeather}
+          country={this.state.country}
+          countryAdvisory={this.state.countryAdvisory}
           />
               
         <Button
