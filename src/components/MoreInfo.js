@@ -14,6 +14,7 @@ import {
 
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
+import Weather from "../components/Weather";
 import Advisory from "../components/UI/Advisory.js";
 import { withAuth0 } from "@auth0/auth0-react";
 import MealsDisplay from "./MealsDisplay";
@@ -199,9 +200,9 @@ class MoreInfo extends Component {
                 {/* <h2>This is where the country details icons are located</h2> */}
               </Container>
               <Pollution countryPollution={this.state.countryPollution} country={this.state.country} />
-                <Advisory 
-            countryAdvisory={this.state.countryAdvisory} 
-          />
+                <Advisory countryAdvisory={this.state.countryAdvisory} />
+                  <Weather countryWeather={this.state.countryWeather} country={this.state.country} />
+
               {this.state.countryMeals.length ? (
                 <MealsDisplay
                   meals={this.state.countryMeals}
@@ -213,6 +214,7 @@ class MoreInfo extends Component {
             </>
           )}
         </Container>
+
         <BucketListModal
           country={this.state.country}
           showModal={this.state.showModal}
