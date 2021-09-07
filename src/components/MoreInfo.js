@@ -16,7 +16,6 @@ import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
 import Weather from "../components/Weather";
 import Advisory from "../components/UI/Advisory.js";
-import { withAuth0 } from "@auth0/auth0-react";
 import MealsDisplay from "./MealsDisplay";
 
 import "./MoreInfo.css";
@@ -136,7 +135,7 @@ class MoreInfo extends Component {
     // Series of logs just to ensure data is working and for review. To comment out or remove from code before deploy
     console.log("Country: ", country);
     console.log("Advisory ", this.state.countryAdvisory);
-    console.log("Advisory 2: ", this.state.countryAdvisory.advisory.message);
+    // console.log("Advisory 2: ", this.state.countryAdvisory.advisory.message);
     // console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     // console.log("Meals: ", this.state.countryMeals);
