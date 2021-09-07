@@ -12,16 +12,18 @@ class MealsDisplay extends Component {
       <Container className="mt-3 mb-5">
         <Accordion>
           <Card>
-            <Accordion.Toggle
-              as={Card.Header}
-              style={{ cursor: "pointer" }}
-              eventKey="0"
-            >
-              <h3>
-                Meal Recipes from {this.props.countryName} -{" "}
-                {this.props.meals.length}
-              </h3>
-            </Accordion.Toggle>
+            <Card.Header as="h5">
+              <Accordion.Toggle
+                as={Card.Header}
+                style={{ cursor: "pointer" }}
+                eventKey="0"
+              >
+                {/* <h3> */}
+                  Meal Recipes from {this.props.countryName} -{" "}
+                  {this.props.meals.length}
+                {/* </h3> */}
+              </Accordion.Toggle>
+            </Card.Header>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 <CardColumns>

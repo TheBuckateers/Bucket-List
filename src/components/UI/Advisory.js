@@ -1,23 +1,35 @@
 import { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Accordion, Container } from "react-bootstrap";
 
 class Advisory extends Component {
   render() {
-    console.log('ADVISORY', this.props.countryAdvisory.advisory);
+    // console.log('ADVISORY', this.props.countryAdvisory.advisory);
     return (
-      <Card>
-        <Card.Header as="h5">Travel Advisory</Card.Header>
-          {this.props.countryAdvisory.advisory &&
-        <Card.Body>
-            <Card.Text as="h3">
-              {this.props.countryAdvisory.advisory.message}
-            </Card.Text>
-          <Card.Text>
-            Updated on: {this.props.countryAdvisory.advisory.updated}
-          </Card.Text>
-        </Card.Body>
-      }
-      </Card>
+      <Container className="mt-3 mb-5">
+        <Accordion >
+          <Card>
+            <Card.Header as="h5">
+              <Accordion.Toggle 
+              as={Card.Header} 
+              variant="link" 
+              style={{ cursor: "pointer" }}
+              eventKey="0">
+                Travel Advisory
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                <Card.Text>
+                  {this.props.countryAdvisory.advisory && this.props.countryAdvisory.advisory.message}
+                </Card.Text>
+                <Card.Text>
+                  Updated on: {this.props.countryAdvisory.advisory && this.props.countryAdvisory.advisory.updated}
+                </Card.Text>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
+      </Container>
     )
   }
 }

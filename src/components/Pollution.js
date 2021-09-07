@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container, Card, Image } from "react-bootstrap";
+import { Container, Card, Image, Accordion } from "react-bootstrap";
 import aqi from "../img/aqi-index.jpg";
 
 class Pollution extends Component {
@@ -13,23 +13,35 @@ class Pollution extends Component {
   render() {
     // console.log(this.props.countryPollution);
     return (
-      <Container>
-        <Card>
-          <Card.Header as="h5">Pollution</Card.Header>
-          <Card.Body>
-            <Card.Text>
-              <h2>
-                {this.props.country.name} Current AQI: {this.props.countryPollution.aqi}
-              </h2>
-            </Card.Text>
-            <Image
-              src={aqi}
-              alt="air quality index"
-              description="https://www.cleanairpartners.net/aqi"
-              fluid
-            />
-          </Card.Body>
-        </Card>
+      <Container className="mt-3 mb-5">
+        <Accordion>
+          <Card>
+            <Card.Header as="h5">
+              <Accordion.Toggle 
+              as={Card.Header} 
+              variant="link" 
+              style={{ cursor: "pointer" }}
+              eventKey="0">
+                Pollution
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                <Card.Text>
+
+                  {this.props.country.name} Current AQI: {this.props.countryPollution.aqius}
+
+                </Card.Text>
+                <Image
+                  src={aqi}
+                  alt="air quality index"
+                  description="https://www.cleanairpartners.net/aqi"
+                  fluid
+                />
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
       </Container>
     );
   }
