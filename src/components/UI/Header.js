@@ -11,8 +11,7 @@ class Header extends Component {
   render() {
     const { isAuthenticated, loginWithRedirect, logout } = this.props.auth0;
     const loginDisplay = (
-      <Button onClick={() => loginWithRedirect()}>Log In
-      </Button>
+      <Button onClick={() => loginWithRedirect()}>Log In</Button>
     );
     const logoutDisplay = (
       <Button onClick={() => logout({ returnTo: window.location.origin })}>
@@ -25,19 +24,22 @@ class Header extends Component {
           backgroundColor: "#160f29",
         }}
       >
-        <Navbar expand="xxl"
-          // bg="dark" variant="dark"  
+        <Navbar
+          expand="xxl"
+          // bg="dark" variant="dark"
           style={{
             backgroundColor: "#160F29",
-          }}>
+          }}
+        >
           <Navbar.Brand
             style={{
               color: "#F3DFC1",
-              fontWeight: 'bold',
+              fontWeight: "bold",
             }}
-          >Bucket List
+          >
+            Bucket List
           </Navbar.Brand>
-
+        </Navbar>
         {/* Option 1 */}
         {/* <Navbar expand="xxl" bg="dark" variant="dark">
           <Navbar.Brand>Bucket List</Navbar.Brand>
@@ -57,17 +59,20 @@ class Header extends Component {
               <Link to="/bucket">Bucket List</Link>
             </Button>
           )}
-          {isAuthenticated ? logoutDisplay : loginDisplay}
+          {isAuthenticated ? logoutDisplay : loginDisplay} 
         </Navbar> */}
         {/* Option 2 */}
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand>Bucket List</Navbar.Brand>
+          {/* <Navbar.Brand>Bucket List</Navbar.Brand> */}
           <Nav>
+            {isAuthenticated && (
+              <Button>
+                <Link to="/bucket">Bucket List</Link>
+              </Button>
+            )}
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/about">About Us</Nav.Link>
-            {isAuthenticated && (
-              <Nav.Link href="/profile">Profile</Nav.Link>
-            )}
+            {isAuthenticated && <Nav.Link href="/profile">Profile</Nav.Link>}
             {isAuthenticated ? logoutDisplay : loginDisplay}
           </Nav>
         </Navbar>

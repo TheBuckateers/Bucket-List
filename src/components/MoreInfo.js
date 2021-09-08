@@ -22,7 +22,6 @@ import "./MoreInfo.css";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
-
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +38,6 @@ class MoreInfo extends Component {
     };
   }
 
-
   // shows the buckets modal
   handleShowModal = () => {
     this.setState({
@@ -52,7 +50,7 @@ class MoreInfo extends Component {
     this.setState({
       showModal: false,
     });
-  }
+  };
 
   // adds a country to the bucketlist when the note modal is open
   handleAdd = async (bucket) => {
@@ -60,13 +58,11 @@ class MoreInfo extends Component {
       let response = await axios.post(`${SERVER}/bucketList`, bucket);
       this.setState({
         buckets: [...this.state.buckets, response.data],
-      })
+      });
+    } catch (err) {
+      console.log("handleAdd err:", err);
     }
-    catch (err) {
-      console.log('handleAdd err:', err);
-    }
-  }
-
+  };
 
   componentDidMount = async () => {
     const { country } = this.state;
@@ -130,7 +126,6 @@ class MoreInfo extends Component {
     // console.log("Pics: ", this.state.countryPics);
   };
 
-
   render() {
     const { isAuthenticated } = this.props.auth0;
     let carouselItems;
@@ -159,8 +154,6 @@ class MoreInfo extends Component {
       });
     }
 
-
-
     return (
       <>
         <Container className="mt-3">
@@ -186,9 +179,16 @@ class MoreInfo extends Component {
                 )}
                 {/* <h2>This is where the country details icons are located</h2> */}
               </Container>
-              <Pollution countryPollution={this.state.countryPollution} country={this.state.country} />
+              <Pollution
+                countryPollution={this.state.countryPollution}
+                country={this.state.country}
+              />
               {/* <Advisory countryAdvisory={this.state.countryAdvisory} /> */}
-              <Weather countryWeather={this.state.countryWeather} country={this.state.country} />
+              <Weather
+                countryWeather={this.state.countryWeather}
+                country={this.state.country}
+              />
+              <Advisory countryAdvisory={this.state.countryAdvisory} />
 
               {this.state.countryMeals.length ? (
                 <MealsDisplay
@@ -208,7 +208,6 @@ class MoreInfo extends Component {
           closeModal={this.handleCloseModal}
           handleAdd={this.handleAdd}
         />
-
       </>
     );
   }
