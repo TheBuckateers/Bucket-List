@@ -7,22 +7,35 @@
 
 .Heather {
   width: 400px;
-  margin: 10px;
+  /* width: max-content; */
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .Clarissa {
   width: 400px;
-  margin: 10px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .Mark {
   width: 400px;
-  margin: 10px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 .Willem {
   width: 400px;
-  margin: 10px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 .header {
@@ -30,6 +43,10 @@
   margin: auto;
   padding: 10px;
 }
+
+/* .row {
+  margin: 10px;
+} */
 
 .card-link {
 color: black;

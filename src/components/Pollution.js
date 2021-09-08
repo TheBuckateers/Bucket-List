@@ -28,9 +28,7 @@ class Pollution extends Component {
             <Accordion.Collapse eventKey="0">
               <Card.Body>
                 <Card.Text>
-
                   {this.props.country.name} Current AQI: {this.props.countryPollution.aqius}
-
                 </Card.Text>
                 <Image
                   src={aqi}
