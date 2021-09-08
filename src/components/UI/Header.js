@@ -20,7 +20,24 @@ class Header extends Component {
       </Button>
     );
     return (
-      <header>
+      <header
+        style={{
+          backgroundColor: "#160f29",
+        }}
+      >
+        <Navbar expand="xxl"
+          // bg="dark" variant="dark"  
+          style={{
+            backgroundColor: "#160F29",
+          }}>
+          <Navbar.Brand
+            style={{
+              color: "#F3DFC1",
+              fontWeight: 'bold',
+            }}
+          >Bucket List
+          </Navbar.Brand>
+
         {/* Option 1 */}
         {/* <Navbar expand="xxl" bg="dark" variant="dark">
           <Navbar.Brand>Bucket List</Navbar.Brand>

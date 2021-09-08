@@ -7,7 +7,12 @@ import Container from "react-bootstrap/Container";
 class Search extends Component {
   render() {
     return (
-      <Container className="mt-3 w-75 mb-3">
+      <Container className="w-75 mb-3"
+        style={{
+          backgroundColor: "#f3dfc1",
+          paddingTop: "20px",
+        }}
+      >
         <InputGroup>
           <FormControl
             placeholder="Country Search"
