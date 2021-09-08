@@ -5,7 +5,7 @@ class Advisory extends Component {
   render() {
     // console.log('ADVISORY', this.props.countryAdvisory.advisory);
     return (
-      <Container className="mt-3 mb-5">
+      <Container className="mt-3 mb-3">
         <Accordion >
           <Card>
             <Card.Header as="h5">

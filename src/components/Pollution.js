@@ -13,7 +13,7 @@ class Pollution extends Component {
   render() {
     // console.log(this.props.countryPollution);
     return (
-      <Container className="mt-3 mb-5">
+      <Container className="mt-3 mb-3">
         <Accordion>
           <Card>
             <Card.Header as="h5">

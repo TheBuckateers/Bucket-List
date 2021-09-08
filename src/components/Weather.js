@@ -6,16 +6,16 @@ class Weather extends Component {
     // console.log('icon', this.props.countryWeather.ic);
     return (
       <>
-        <Container className="mt-3 mb-5">
+        <Container className="mt-3 mb-3">
           {/* remove defaultActiveKey="0" for closed Accordian */}
           <Accordion >
             <Card>
               <Card.Header as="h5">
-                <Accordion.Toggle 
-                as={Card.Header} 
-                variant="link" 
-                style={{ cursor: "pointer" }}
-                eventKey="0">
+                <Accordion.Toggle
+                  as={Card.Header}
+                  variant="link"
+                  style={{ cursor: "pointer" }}
+                  eventKey="0">
                   Weather
                 </Accordion.Toggle>
               </Card.Header>
@@ -37,6 +37,10 @@ class Weather extends Component {
                   <Card.Text>
                     {/* Wind direction */}
                     Wind Direction: {this.props.countryWeather.wd} as an angle of 360° (N=0, E=90, S=180, W=270)
+                  </Card.Text>
+                  <Card.Text>
+                    {/* Wind direction */}
+                    Updated On: {this.props.countryWeather.ts}
                   </Card.Text>
                   {/* Weather Icon */}
                   {/* <h4>{this.props.countryWeather.ic}</h4> */}

@@ -20,7 +20,7 @@ class MealsDisplay extends Component {
               >
                 {/* <h3> */}
                   Meal Recipes from {this.props.countryName} -{" "}
-                  {this.props.meals.length}
+                  {this.props.meals.length} Recipes
                 {/* </h3> */}
               </Accordion.Toggle>
             </Card.Header>

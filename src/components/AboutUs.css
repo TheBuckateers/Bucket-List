@@ -1,22 +1,36 @@
 .cardContainer {
   background-color: aquamarine;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+  /* display: flex;
+  flex-direction: column; */
+  margin-top: 0px;
 }
 
 .Heather {
-  width: 300px;
+  width: 400px;
+  margin: 10px;
 }
 
 .Clarissa {
-  width: 300px;
+  width: 400px;
+  margin: 10px;
 }
 
 .Mark {
-  width: 300px;
+  width: 400px;
+  margin: 10px;
 }
 
 .Willem {
-  width: 300px;
+  width: 400px;
+  margin: 10px;
+}
+
+.header {
+  width: max-content;
+  margin: auto;
+  padding: 10px;
+}
+
+.card-link {
+color: black;
 }
