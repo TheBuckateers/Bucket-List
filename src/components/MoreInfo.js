@@ -15,16 +15,14 @@ import {
 import Pollution from "../components/Pollution.js";
 import BucketListModal from "../components/BucketListModal";
 import Weather from "../components/Weather";
-// import Advisory from "../components/UI/Advisory.js";
+import Advisory from "../components/UI/Advisory.js";
 import MealsDisplay from "./MealsDisplay";
-// import BucketList from "./BucketList";
 
 import "./MoreInfo.css";
 
 const SERVER = process.env.REACT_APP_BACKEND_SERVER;
 
 
-// import "./MoreInfo.css";
 class MoreInfo extends Component {
   constructor(props) {
     super(props);
