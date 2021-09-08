@@ -26,6 +26,7 @@ class BucketList extends React.Component {
   componentDidMount = async () => {
     const { user } = this.props.auth0;
     let email = user.email;
+    console.log(user, this.props.auth0);
     try {
       const results = await axios.get(`${SERVER}/bucketList?email=${email}`);
       this.setState({
@@ -88,7 +89,7 @@ class BucketList extends React.Component {
                 <Col xs={12} md={6} lg={4}>
                   <Card
                     key={item._id}
-                    className="mt-3"
+                    className="mt-3 mb-3"
                     style={{ height: "30rem" }}
                   >
                     <Card.Img
