@@ -6,29 +6,44 @@ class Weather extends Component {
     // console.log('icon', this.props.countryWeather.ic);
     return (
       <>
-        <Container>
+        <Container className="mt-3 mb-3">
           {/* remove defaultActiveKey="0" for closed Accordian */}
-          <Accordion defaultActiveKey="0">
+          <Accordion >
             <Card>
               <Card.Header as="h5">
-                <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+                <Accordion.Toggle
+                  as={Card.Header}
+                  variant="link"
+                  style={{ cursor: "pointer" }}
+                  eventKey="0">
                   Weather
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
-                <h3>{this.props.country.name} Forecast</h3>
-                 {/*Temp in Fahrenheit  */}
-                <h4>Temperature: {this.props.countryWeather.tp * 1.5 + 32}&#8457;</h4> 
-                {/* Weather Icon */}
-                {/* <h4>{this.props.countryWeather.ic}</h4> */}
-                {/* Humidity */}
-                <h4>Humidity: {this.props.countryWeather.hu}%</h4> 
-                {/* Windspeed */}
-                <h4>Wind Speed: {this.props.countryWeather.ws}(m/s)</h4> 
-                {/* <h4>Wind Speed: {this.props.countryAdvisory.message}(m/s)</h4>  */}
-                {/* Wind direction */}
-                <h4>Wind Direction: {this.props.countryWeather.wd} as an angle of 360° (N=0, E=90, S=180, W=270)</h4>
+                  <h4>{this.props.country.name} Forecast</h4>
+                  <Card.Text>
+                    {/*Temp in Fahrenheit  */}
+                    Temperature: {this.props.countryWeather.tp * 1.5 + 32}&#8457;
+                  </Card.Text>
+                  <Card.Text>
+                    {/* Humidity */}
+                    Humidity: {this.props.countryWeather.hu}%
+                  </Card.Text>
+                  <Card.Text>
+                    {/* Windspeed */}
+                    Wind Speed: {this.props.countryWeather.ws}(m/s)
+                  </Card.Text>
+                  <Card.Text>
+                    {/* Wind direction */}
+                    Wind Direction: {this.props.countryWeather.wd} as an angle of 360° (N=0, E=90, S=180, W=270)
+                  </Card.Text>
+                  <Card.Text>
+                    {/* Wind direction */}
+                    Updated On: {this.props.countryWeather.ts}
+                  </Card.Text>
+                  {/* Weather Icon */}
+                  {/* <h4>{this.props.countryWeather.ic}</h4> */}
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
