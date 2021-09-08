@@ -7,7 +7,12 @@ class Layout extends Component {
     return (
       <>
         <Header />
-        <main>{this.props.children}</main>
+        <main 
+          style={{
+            backgroundColor: "#f3dfc1",
+          }}
+        >
+          {this.props.children}</main>
       </>
     );
   }
