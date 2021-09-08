@@ -52,6 +52,11 @@ class Header extends Component {
               <Link to="/profile">Profile</Link>
             </Button>
           )}
+          {isAuthenticated && (
+            <Button>
+              <Link to="/bucket">Bucket List</Link>
+            </Button>
+          )}
           {isAuthenticated ? logoutDisplay : loginDisplay}
         </Navbar> */}
         {/* Option 2 */}
