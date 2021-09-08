@@ -1,22 +1,53 @@
 .cardContainer {
   background-color: aquamarine;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+  /* display: flex;
+  flex-direction: column; */
+  margin-top: 0px;
 }
 
 .Heather {
-  width: 300px;
+  width: 400px;
+  /* width: max-content; */
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .Clarissa {
-  width: 300px;
+  width: 400px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .Mark {
-  width: 300px;
+  width: 400px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 .Willem {
-  width: 300px;
+  width: 400px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.header {
+  width: max-content;
+  margin: auto;
+  padding: 10px;
+}
+
+/* .row {
+  margin: 10px;
+} */
+
+.card-link {
+color: black;
 }

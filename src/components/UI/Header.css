@@ -1,6 +1,6 @@
 header {
   margin: 0;
-}
+} 
 
 a {
   color: #fff;
@@ -8,5 +8,9 @@ a {
 
 a:hover {
   color: darkgrey;
+}
+
+.rightButton {
+  justify-content: right;
 }
 

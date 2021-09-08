@@ -136,7 +136,7 @@ class MoreInfo extends Component {
     console.log("Country: ", country);
     console.log("Advisory ", this.state.countryAdvisory);
     // console.log("Advisory 2: ", this.state.countryAdvisory.advisory.message);
-    // console.log("Pollution: ", this.state.countryPollution);
+    console.log("Pollution: ", this.state.countryPollution);
     console.log("Weather: ", this.state.countryWeather);
     // console.log("Meals: ", this.state.countryMeals);
     // console.log("Pics: ", this.state.countryPics);
