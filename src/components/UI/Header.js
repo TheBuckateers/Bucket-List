@@ -71,7 +71,7 @@ class Header extends Component {
               color: "#F3DFC1",
               fontWeight: "bold",
             }}>
-            Bucket List
+            Travel Buckaroo
           </Navbar.Brand>
           <Nav>
             <Nav.Link href="/">Home</Nav.Link>

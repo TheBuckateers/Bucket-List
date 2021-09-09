@@ -111,7 +111,7 @@ class Main extends Component {
             paddingLeft: "auto",
             paddingRight: "auto",
           }}>
-            Welcome to (name of app)! Select or search for a country below to see more information on your travel needs
+            Welcome to Travel Buckaroo! Select or search for a country below to see more information on your travel needs
           </h2>
         </Container>
         <Search
