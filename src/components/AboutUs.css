@@ -1,0 +1,54 @@
+.cardContainer {
+  background-color: #368f8b;
+  /* display: flex;
+  flex-direction: column; */
+  margin-top: 0px;
+  padding-top: 15px;
+}
+
+.Heather {
+  width: 400px;
+  /* width: max-content; */
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Clarissa {
+  width: 400px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Mark {
+  width: 400px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.Willem {
+  width: 400px;
+  /* margin: 10px; */
+  /* width: max-content; */
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.header {
+  width: max-content;
+  margin: auto;
+  padding: 10px;
+}
+
+/* .row {
+  margin: 10px;
+} */
+
+.card-link {
+color: black;
+}

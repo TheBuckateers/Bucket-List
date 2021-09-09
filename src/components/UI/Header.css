@@ -1,0 +1,19 @@
+header {
+  margin: 0;
+} 
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: darkgrey;
+}
+
+.bucketButton {
+  margin-left: 5px;
+}
+
+.logButton {
+  margin-left: 10px;
+}
