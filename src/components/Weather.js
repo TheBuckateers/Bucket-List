@@ -32,7 +32,7 @@ class Weather extends Component {
                   </Card.Text>
                   <Card.Text>
                     {/* Windspeed */}
-                    Wind Speed: {this.props.countryWeather.ws}(m/s)
+                    Wind Speed: {Math.ceil(this.props.countryWeather.ws * 2.24)} MPH
                   </Card.Text>
                   <Card.Text>
                     {/* Wind direction */}

@@ -10,6 +10,7 @@ import {
 import Button from "react-bootstrap/Button";
 import { withAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import UpdateNoteModal from "./UpdateNoteModal";
 
 import "./BucketList.css";
 
@@ -20,12 +21,15 @@ class BucketList extends React.Component {
     super(props);
     this.state = {
       bucketList: [],
+      showModal: false,
+      selectedItem: '',
     };
   }
 
   componentDidMount = async () => {
     const { user } = this.props.auth0;
     let email = user.email;
+    console.log(user, this.props.auth0);
     try {
       const results = await axios.get(`${SERVER}/bucketList?email=${email}`);
       this.setState({
@@ -63,6 +67,28 @@ class BucketList extends React.Component {
   //   }
   // };
 
+  // handles updates to the buckets on the db -Mark
+  handleUpdate = async (item) => {
+    try {
+      let modalItem = this.state.selectedItem;
+      modalItem.note = item;
+      // console.log('modal item', modalItem);
+      await axios.put(`${SERVER}/bucketList/${modalItem._id}`, modalItem);
+      let updatedItems = this.state.bucketList.map((updatedItem) => {
+        if (updatedItem._id === modalItem._id) {
+          return modalItem;
+        } else {
+          return updatedItem;
+        }
+      });
+      this.setState({
+        bucketList: updatedItems,
+      });
+    } catch (err) {
+      console.log("updateError:", err);
+    }
+  };
+
   // handles deletes on the buckets to the db
   handleDelete = async (id) => {
     try {
@@ -78,6 +104,20 @@ class BucketList extends React.Component {
     }
   };
 
+  handleShowModal = (item) => {
+    this.setState({
+      showModal: true,
+      selectedItem: item,
+    })
+  }
+
+  handleCloseModal = () => {
+    this.setState({
+      showModal: false,
+    })
+  }
+
+
   render() {
     return (
       <>
@@ -88,7 +128,7 @@ class BucketList extends React.Component {
                 <Col xs={12} md={6} lg={4}>
                   <Card
                     key={item._id}
-                    className="mt-3"
+                    className="mt-3 mb-3"
                     style={{ height: "30rem" }}
                   >
                     <Card.Img
@@ -119,6 +159,14 @@ class BucketList extends React.Component {
                     </Card.Body>
                     <Card.Footer>
                       <Button
+                        className="mr-1"
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => this.handleShowModal(item)}
+                      >
+                        Update Note
+                      </Button>
+                      <Button
                         variant="danger"
                         size="sm"
                         onClick={() => this.handleDelete(item._id)}
@@ -132,6 +180,12 @@ class BucketList extends React.Component {
             })}
           </Row>
         </Container>
+        <UpdateNoteModal 
+        showModal={this.state.showModal} 
+        handleCloseModal={this.handleCloseModal}
+        handleUpdate={this.handleUpdate}
+        selectedItem={this.state.selectedItem.note}
+        />
       </>
     );
   }

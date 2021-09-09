@@ -168,7 +168,7 @@ class MoreInfo extends Component {
           ) : (
             <>
               <Carousel>{carouselItems}</Carousel>
-              <Container>
+              <Container className="d-flex justify-content-center">
                 {/* Icons for overlays or modals*/}
                 {isAuthenticated ? (
                   <Button
@@ -179,19 +179,18 @@ class MoreInfo extends Component {
                     Add Country to Your Bucket List
                   </Button>
                 ) : (
-                  <h4 className="border p-2 mt-2 mb-2 text-center bg-success border border-dark rounded">
+                  <h4 className="border p-2 mt-2 mb-2 text-center bg-warning border border-dark rounded">
                     Login to add {this.state.country.name} to your Bucket List
                   </h4>
                 )}
                 {/* <h2>This is where the country details icons are located</h2> */}
               </Container>
-              <Pollution
-                countryPollution={this.state.countryPollution}
-                country={this.state.country}
-              />
-              {/* <Advisory countryAdvisory={this.state.countryAdvisory} /> */}
               <Weather
                 countryWeather={this.state.countryWeather}
+                country={this.state.country}
+              />
+              <Pollution
+                countryPollution={this.state.countryPollution}
                 country={this.state.country}
               />
               <Advisory countryAdvisory={this.state.countryAdvisory} />
