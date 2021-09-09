@@ -16,35 +16,29 @@ class AboutUs extends React.Component {
           <Row xs={1} md={2} className="g-4">
             <Col>
               <Card className="Heather">
-                <Card.Img
-                  src={Heather}
-                />
+                <Card.Img src={Heather} />
                 <Card.Body>
                   <Card.Title>Heather Bisgaard</Card.Title>
                   <Card.Subtitle>Full Stack Software Engineer</Card.Subtitle>
                   <Card.Text>What's on my bucket? New Zealand</Card.Text>
-                  <Card.Text>
-                    Description 
-                  </Card.Text>
+                  <Card.Text>Description</Card.Text>
                   <Card.Link href="https://www.linkedin.com/in/heather-bisgaard/">
                     LinkedIn
                   </Card.Link>
-                  <Card.Link href="https://github.com/vbchomp">Github</Card.Link>
+                  <Card.Link href="https://github.com/vbchomp">
+                    Github
+                  </Card.Link>
                 </Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className="Clarissa">
-                <Card.Img
-                  src={Clarissa}
-                />
+                <Card.Img src={Clarissa} />
                 <Card.Body>
                   <Card.Title>Clarissa Pamonicutt</Card.Title>
                   <Card.Subtitle>Full-Stack Developer</Card.Subtitle>
                   <Card.Text>What's on my bucket? Japan</Card.Text>
-                  <Card.Text>
-                    Description 
-                  </Card.Text>
+                  <Card.Text>Description</Card.Text>
                   <Card.Link href="https://www.linkedin.com/in/cpamonicutt/">
                     LinkedIn
                   </Card.Link>
@@ -58,17 +52,27 @@ class AboutUs extends React.Component {
           <Row xs={1} md={2} className="g-4">
             <Col>
               <Card className="Mark">
-                <Card.Img
-                  src={Mark}
-                />
+                <Card.Img src={Mark} />
                 <Card.Body>
                   <Card.Title>Mark Thanadabouth</Card.Title>
                   <Card.Subtitle>Full-Stack Developer</Card.Subtitle>
+                  <Card.Text>What's on my bucket? Italy</Card.Text>
                   <Card.Text>
-                    What's on my bucket? Italy
-                  </Card.Text>
-                  <Card.Text>
-                    Mark is currently a software development student learning to code. He is an Army veteran who is originally from Chicago. Right after the military, he received a dual degree in Electronic Music Production and Digital Audio engineering. He then transitioned into the fitness field and became a personal trainer for a couple of years. After his time as a personal trainer, he decided to take a leap into the software development world. He decided to transition into software development because he likes to solve problems and work with teams. He is highly adaptable and willing to learn whatever it takes to reach his goal. He chose to learn this skill so he can be competitive in the tech industry. His passion for tech is extremely vast; tech is all around and is growing day by day with no plans of stopping. He hopes that one day, his skills can be a part of that movement.
+                    Mark is currently a software development student learning to
+                    code. He is an Army veteran who is originally from Chicago.
+                    Right after the military, he received a dual degree in
+                    Electronic Music Production and Digital Audio engineering.
+                    He then transitioned into the fitness field and became a
+                    personal trainer for a couple of years. After his time as a
+                    personal trainer, he decided to take a leap into the
+                    software development world. He decided to transition into
+                    software development because he likes to solve problems and
+                    work with teams. He is highly adaptable and willing to learn
+                    whatever it takes to reach his goal. He chose to learn this
+                    skill so he can be competitive in the tech industry. His
+                    passion for tech is extremely vast; tech is all around and
+                    is growing day by day with no plans of stopping. He hopes
+                    that one day, his skills can be a part of that movement.
                   </Card.Text>
                   <Card.Link href="https://www.linkedin.com/in/markjackson28/">
                     LinkedIn
@@ -81,13 +85,34 @@ class AboutUs extends React.Component {
             </Col>
             <Col>
               <Card className="Willem">
-                <Card.Img
-                  src={Will}
-                />
+                <Card.Img src={Will} />
                 <Card.Body>
                   <Card.Title>Willem Jacobs</Card.Title>
                   <Card.Subtitle>Software Developer</Card.Subtitle>
                   <Card.Text>What's on my bucket? Iceland</Card.Text>
+                  <Card.Text>
+                    <p>
+                      Over my 30 years of employment, I have worked in various
+                      areas of software development from coder in various
+                      languages, testing, design, full project management and IT
+                      manager of department. I left the IT field about 15 years
+                      ago and moved to upper/executive management.
+                    </p>
+                    <p>
+                      I have a passion for software development as I enjoy being
+                      challenged by the numerous problem solving needs, logical
+                      thinking requirements, team work collaboration and, most
+                      of all, the satisfaction of the client receiving their
+                      final product.
+                    </p>
+                    <p>
+                      I would like to blend my years of experience in the cargo
+                      logistics industry and port management into software
+                      development to streamline the vast amount of data and
+                      processes that are used for the movement of commerce world
+                      wide.
+                    </p>
+                  </Card.Text>
                   <Card.Link href="https://www.linkedin.com/in/willemajacobs/">
                     LinkedIn
                   </Card.Link>
