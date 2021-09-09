@@ -1,8 +1,9 @@
 .cardContainer {
-  background-color: aquamarine;
+  background-color: #368f8b;
   /* display: flex;
   flex-direction: column; */
   margin-top: 0px;
+  padding-top: 15px;
 }
 
 .Heather {

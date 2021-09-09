@@ -156,7 +156,13 @@ class MoreInfo extends Component {
 
     return (
       <>
-        <Container className="mt-3">
+        <Container 
+        // className="mt-0"
+        style={{
+          paddingTop: "20px",
+          paddingBottom: "50px",
+        }}
+        >
           {this.state.isLoading ? (
             <Spinner />
           ) : (

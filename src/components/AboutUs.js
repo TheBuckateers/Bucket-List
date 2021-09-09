@@ -42,7 +42,11 @@ class AboutUs extends React.Component {
                   <Card.Title>Clarissa Pamonicutt</Card.Title>
                   <Card.Subtitle>Full-Stack Developer</Card.Subtitle>
                   <Card.Text>What's on my bucket? Japan</Card.Text>
-                  <Card.Text>Description</Card.Text>
+                  <Card.Text>
+                    Clarissa is currently a student studying software development.
+                    She previously worked in the telecommunications industry as an inventory manager, where she was responsible for organizing and overseeing the supply chain. Her innate ability to recognize logical structures for organization and create efficient solutions, enhances usability for the company which translates into a better product for customers.
+                    Identifying problems and their root cause, as well as finding solutions to prevent them in the future has been one of her greatest strengths not only in past work experience, but in life as well. As a software developer, this has helped her to debug code and find errors in applications. She has an obsessive attention to detail and a love for puzzle solving that drives her desire to learn more about building flawless applications. She grew up as a competitive gamer and is looking for an opportunity to turn her passion for technology into a career where she can build products that people from all backgrounds can fall in love with.
+                  </Card.Text>
                   <Card.Link href="https://www.linkedin.com/in/cpamonicutt/">
                     LinkedIn
                   </Card.Link>
