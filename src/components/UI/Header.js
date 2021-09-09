@@ -62,7 +62,13 @@ class Header extends Component {
           {isAuthenticated ? logoutDisplay : loginDisplay} 
         </Navbar> */}
         {/* Option 2 */}
-        <Navbar bg="dark" variant="dark">
+        <Navbar
+          // bg="dark" 
+          variant="dark"
+          style={{
+            backgroundColor: "160f29",
+          }}
+        >
           {/* <Navbar.Brand>Bucket List</Navbar.Brand> */}
           <Nav>
             {isAuthenticated && (

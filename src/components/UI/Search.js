@@ -10,7 +10,8 @@ class Search extends Component {
       <Container className="w-75 mb-3"
         style={{
           backgroundColor: "#f3dfc1",
-          paddingTop: "20px",
+          paddingTop: "30px",
+          paddingBottom: "20px",
         }}
       >
         <InputGroup>

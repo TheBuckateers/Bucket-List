@@ -5,6 +5,7 @@ import Spinner from "react-bootstrap/Spinner";
 import "./Main.css";
 import Search from "./UI/Search";
 import { getCountries } from "../helpers/DataHelpers";
+import { Container } from "react-bootstrap";
 
 class Main extends Component {
   constructor(props) {
@@ -103,6 +104,16 @@ class Main extends Component {
   render() {
     return (
       <>
+        <Container>
+          <h2 style={{
+            color: "368f8b",
+            paddingTop: "20px",
+            paddingLeft: "auto",
+            paddingRight: "auto",
+          }}>
+            Welcome to (name of app)! Select or search for a country below to see more information on your travel needs
+          </h2>
+        </Container>
         <Search
           countrySearch={this.state.countrySearch}
           onChange={this.countrySearchChangeHandler}
