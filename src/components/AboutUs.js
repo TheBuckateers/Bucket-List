@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Container, Col, Row } from "react-bootstrap";
-import Clarissa from "../img/Clarissa.jpg";
+import Clarissa from "../img/clarissa.jpg";
 import Heather from "../img/Heather.jpg";
 import Mark from "../img/Mark.jpg";
-import Will from "../img/Will.jpg";
+import Will from "../img/will.jpg";
 
 import "../components/AboutUs.css";
 
